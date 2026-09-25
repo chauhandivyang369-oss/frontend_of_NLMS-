@@ -1,0 +1,6 @@
+{
+  "name": "NLAMS - National Land Acquisition & Management System",
+  "description": "National Land Acquisition & Management System (NLAMS) - Comprehensive statutory workflows for District Collector (CALA), Appropriate Government (Central & State), LARR Authority, Requisitioning Body, SIA/IEG, Policy Maker Oversight, and R&R Authority under RFCTLARR Act 2013.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
