@@ -67,7 +67,7 @@ export default function CaseContextHeader() {
         
         {/* Case ID & Reference */}
         <div className="flex items-center gap-2.5">
-          <div className="p-1 rounded bg-[#1B365D] text-[#E6CA85] font-mono text-xs font-bold px-2 border border-[#C5A059]">
+          <div className="p-1 rounded bg-[#24548A] text-[#E6CA85] font-mono text-xs font-bold px-2.5 border border-[#C5A059] shadow-xs">
             CASE: {caseId}
           </div>
 
@@ -110,7 +110,7 @@ export default function CaseContextHeader() {
         {/* 1. Claimant / Landowner */}
         <div className="bg-slate-50/80 p-1.5 sm:p-2 rounded-lg border border-slate-200">
           <div className="text-[10px] font-mono uppercase text-slate-600 font-bold truncate">Claimant</div>
-          <div className="font-bold text-[#1B365D] truncate text-[11px] sm:text-xs" title={claimantName}>
+          <div className="font-bold text-[#24548A] truncate text-[11px] sm:text-xs" title={claimantName}>
             {claimantName}
           </div>
           <div className="text-[10px] text-slate-700 truncate">

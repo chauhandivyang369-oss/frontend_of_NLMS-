@@ -43,39 +43,39 @@ export default function AppropriateGovHeader() {
   return (
     <header className="bg-[#1B365D] text-white border-b-2 border-[#C5A059] shadow-md sticky top-0 z-40 shrink-0">
       {/* Top Banner Ribbon */}
-      <div className="bg-[#142642] px-4 py-1 text-[11px] text-slate-300 flex items-center justify-between border-b border-slate-700/60 font-sans">
-        <div className="flex items-center gap-3">
-          <span className="font-bold tracking-wider text-slate-200 uppercase">
+      <div className="bg-[#142947] px-4 sm:px-6 py-1 text-[11px] text-blue-100 flex items-center justify-between border-b border-blue-900/40 font-sans">
+        <div className="flex items-center gap-2.5 truncate">
+          <span className="font-bold tracking-wider text-amber-300 uppercase shrink-0">
             {isCentral ? 'GOVERNMENT OF INDIA' : 'STATE GOVERNMENT • REVENUE & FOREST DEPARTMENT'}
           </span>
-          <span className="text-slate-500">•</span>
-          <span className="text-slate-300">
-            Right to Fair Compensation and Transparency in Land Acquisition, Rehabilitation and Resettlement Act, 2013
+          <span className="text-blue-300/40">•</span>
+          <span className="text-blue-100/90 truncate text-[10px] sm:text-[11px]">
+            RFCTLARR Act 2013 • Appropriate Government Central / State Directorate
           </span>
         </div>
-        <div className="flex items-center gap-4 text-[10px]">
-          <span className="flex items-center gap-1.5 text-emerald-300 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
+        <div className="hidden sm:flex items-center gap-3 text-[10px] shrink-0 font-mono text-blue-200">
+          <span className="flex items-center gap-1.5 text-emerald-300">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            Statutory Orchestration Gateway • Active
+            Statutory Gateway Active
           </span>
-          <span className="text-amber-300/80">API Ready • PostGIS &amp; DILRMP Sync</span>
         </div>
       </div>
 
       {/* Main Header Bar */}
-      <div className="px-4 py-2.5 flex items-center justify-between">
+      <div className="px-3 sm:px-6 py-2 min-h-[64px] flex items-center justify-between gap-3 md:gap-5">
         {/* Left: Branding & National Seal */}
-        <div className="flex items-center gap-2.5 sm:gap-3.5">
-          {/* Mobile Sidebar Hamburger Toggle */}
+        <div className="flex items-center gap-2.5 sm:gap-4 shrink-0">
+          {/* Sidebar Hamburger Toggle - Available on ALL Screen Sizes */}
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="lg:hidden p-1.5 rounded-lg bg-[#0F1E33] text-[#E6CA85] hover:text-white border border-slate-600/80 cursor-pointer shrink-0"
-            title="Toggle 8 Menus Sidebar"
+            className="flex items-center justify-center p-2 rounded-lg bg-[#142947] hover:bg-[#204373] text-[#E6CA85] hover:text-white border border-blue-400/30 cursor-pointer shrink-0 transition-colors shadow-xs"
+            title="Toggle 8 Statutory Menus Sidebar"
+            aria-label="Toggle Sidebar Menu"
           >
             <Menu className="w-5 h-5" />
           </button>
 
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded bg-white/10 border border-[#C5A059]/60 flex items-center justify-center text-[#E6CA85] font-serif font-black text-xl shadow-xs shrink-0">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/10 border border-[#C5A059]/60 flex items-center justify-center text-[#E6CA85] font-serif font-black text-lg sm:text-xl shadow-xs shrink-0">
             🏛️
           </div>
           <div>
@@ -83,42 +83,27 @@ export default function AppropriateGovHeader() {
               <span className="font-serif font-bold text-base sm:text-lg text-white tracking-wide">
                 NLAMS
               </span>
-              <span className="text-[10px] sm:text-xs bg-[#C5A059] text-slate-950 font-bold px-1.5 py-0.5 rounded font-mono">
+              <span className="text-[10px] bg-[#C5A059] text-slate-950 font-bold px-1.5 py-0.5 rounded font-mono">
                 PILLAR 6 &amp; 7
               </span>
             </div>
-            <div className="text-[10px] sm:text-[11px] text-slate-300 font-medium tracking-tight truncate max-w-[170px] sm:max-w-none">
-              National Land Acquisition &amp; Management System
-            </div>
-          </div>
-
-          {/* Current Workspace Identifier */}
-          <div className="hidden md:flex ml-4 pl-4 border-l border-slate-700 items-center gap-2">
-            <div className="space-y-0.5">
-              <div className="text-[9px] uppercase tracking-widest text-[#E6CA85] font-bold">
-                CURRENT WORKSPACE
-              </div>
-              <div className="text-sm font-bold text-white flex items-center gap-1.5">
-                {isCentral ? 'Central Appropriate Government' : 'State Appropriate Government'}
-                <span className="text-[10px] font-mono font-semibold px-1.5 py-0.2 rounded bg-blue-900/80 text-blue-200 border border-blue-400/40">
-                  {isCentral ? 'National Apex' : 'State Revenue Head'}
-                </span>
-              </div>
+            <div className="text-[10px] sm:text-[11px] text-blue-100 font-medium tracking-tight truncate max-w-[150px] sm:max-w-xs md:max-w-none">
+              {isCentral ? 'Central Appropriate Government' : 'State Appropriate Government'}
             </div>
           </div>
         </div>
 
         {/* Center: Quick Jurisdiction Switcher */}
-        <div className="hidden lg:flex items-center bg-[#142642] p-1 rounded-lg border border-slate-700">
+        <div className="hidden xl:flex items-center bg-[#142947] p-1 rounded-xl border border-blue-400/30 gap-1 shadow-inner shrink-0">
           <button
             onClick={() => {
               setJurisdiction('CENTRAL');
               if (onSwitchWorkspace) onSwitchWorkspace('central-appropriate-gov');
             }}
-            className={`px-3 py-1 rounded text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
               isCentral
-                ? 'bg-[#C5A059] text-slate-950 shadow-sm'
-                : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                ? 'bg-[#C5A059] text-slate-950 shadow-xs'
+                : 'text-blue-100 hover:text-white hover:bg-white/10'
             }`}
           >
             <Building2 className="w-3.5 h-3.5" />
@@ -129,10 +114,10 @@ export default function AppropriateGovHeader() {
               setJurisdiction('STATE');
               if (onSwitchWorkspace) onSwitchWorkspace('state-appropriate-gov');
             }}
-            className={`px-3 py-1 rounded text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
               !isCentral
-                ? 'bg-[#C5A059] text-slate-950 shadow-sm'
-                : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                ? 'bg-[#C5A059] text-slate-950 shadow-xs'
+                : 'text-blue-100 hover:text-white hover:bg-white/10'
             }`}
           >
             <Landmark className="w-3.5 h-3.5" />
@@ -141,14 +126,14 @@ export default function AppropriateGovHeader() {
         </div>
 
         {/* Right: Actions, Global Search, Notifications, Switcher & User Profile */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           {/* Action Drawer Toggle Button */}
           <button
             onClick={() => setIsDrawerOpen(!isDrawerOpen)}
-            className={`p-1.5 px-2 rounded-lg border transition-colors cursor-pointer flex items-center gap-1 shrink-0 ${
+            className={`p-2 px-2.5 sm:px-3 rounded-lg border transition-colors cursor-pointer flex items-center gap-1.5 shrink-0 ${
               isDrawerOpen
                 ? 'bg-[#C5A059] border-[#C5A059] text-slate-950 font-bold shadow-md'
-                : 'bg-[#142642] border-slate-700 text-[#E6CA85] hover:text-white hover:border-[#C5A059]'
+                : 'bg-[#142947] border-blue-400/30 text-[#E6CA85] hover:text-white hover:border-[#C5A059]'
             }`}
             title={isDrawerOpen ? 'Close Action Drawer' : 'Open Contextual Action Drawer'}
           >
@@ -159,34 +144,34 @@ export default function AppropriateGovHeader() {
           {/* Global Search Button */}
           <button
             onClick={() => setIsSearchOpen(true)}
-            className="flex items-center gap-2 bg-[#142642] hover:bg-slate-800 text-slate-300 hover:text-white px-2.5 sm:px-3 py-1.5 rounded border border-slate-700 text-xs cursor-pointer transition-colors"
+            className="flex items-center gap-1.5 sm:gap-2 bg-[#142947] hover:bg-[#204373] text-slate-100 hover:text-white px-2.5 sm:px-3 py-2 rounded-lg border border-blue-400/30 text-xs cursor-pointer transition-colors shadow-xs"
             title="Search Project ID, Proposal ID, ULPIN, Notification"
           >
-            <Search className="w-3.5 h-3.5 text-[#C5A059]" />
-            <span className="hidden sm:inline">Search</span>
-            <kbd className="hidden sm:inline text-[10px] bg-slate-700 text-slate-300 px-1 rounded font-mono">⌘K</kbd>
+            <Search className="w-4 h-4 text-[#C5A059]" />
+            <span className="hidden md:inline">Search</span>
+            <kbd className="hidden lg:inline text-[10px] bg-slate-900 text-slate-300 px-1 rounded font-mono">⌘K</kbd>
           </button>
 
           {/* Notifications Button */}
           <button
             onClick={() => setIsNotificationCenterOpen(true)}
-            className="relative p-1.5 bg-[#142642] hover:bg-slate-800 text-slate-300 hover:text-white rounded border border-slate-700 cursor-pointer transition-colors"
+            className="relative p-2 bg-[#142947] hover:bg-[#204373] text-slate-100 hover:text-white rounded-lg border border-blue-400/30 cursor-pointer transition-colors shadow-xs"
             title="Statutory Alerts &amp; Timers"
           >
             <Bell className="w-4 h-4" />
-            <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-rose-500 text-white rounded-full text-[9px] font-bold flex items-center justify-center">
+            <span className="absolute -top-1 -right-1 w-4 h-4 bg-rose-500 text-white rounded-full text-[9px] font-bold flex items-center justify-center">
               2
             </span>
           </button>
 
-          {/* Master 7-Workspace Switcher Dropdown */}
+          {/* Master Workspace Switcher Dropdown */}
           <div className="relative">
             <button
               onClick={() => setIsWorkspaceMenuOpen(!isWorkspaceMenuOpen)}
-              className="bg-[#142642] hover:bg-slate-800 border border-[#C5A059]/60 text-[#E6CA85] hover:text-white px-3 py-1.5 rounded text-xs font-bold flex items-center gap-2 cursor-pointer transition-colors"
+              className="bg-[#142947] hover:bg-[#204373] border border-[#C5A059]/60 text-[#E6CA85] hover:text-white px-2.5 sm:px-3.5 py-2 rounded-lg text-xs font-bold flex items-center gap-1.5 sm:gap-2 cursor-pointer transition-colors shadow-xs"
             >
               <Layers className="w-4 h-4 text-[#C5A059]" />
-              <span>Switch Workspace</span>
+              <span className="hidden sm:inline">Switch Workspace</span>
               <ChevronDown className="w-3.5 h-3.5" />
             </button>
 
@@ -401,7 +386,7 @@ export default function AppropriateGovHeader() {
           <div className="relative">
             <button
               onClick={() => setIsRoleMenuOpen(!isRoleMenuOpen)}
-              className="flex items-center gap-2 bg-[#142642] hover:bg-slate-800 border border-slate-700 px-3 py-1.5 rounded cursor-pointer transition-colors"
+              className="flex items-center gap-2 bg-[#1C4472] hover:bg-[#285A94] border border-blue-300/30 px-3 py-1.5 rounded-lg cursor-pointer transition-colors shadow-xs"
             >
               <div className="w-6 h-6 rounded-full bg-[#C5A059] text-slate-950 font-bold flex items-center justify-center text-xs">
                 {activeRole.title.charAt(0)}
@@ -410,11 +395,11 @@ export default function AppropriateGovHeader() {
                 <div className="text-xs font-bold text-white line-clamp-1 max-w-[130px]">
                   {activeRole.title}
                 </div>
-                <div className="text-[10px] text-slate-400 line-clamp-1 max-w-[130px]">
+                <div className="text-[10px] text-blue-200 line-clamp-1 max-w-[130px]">
                   {activeRole.department}
                 </div>
               </div>
-              <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+              <ChevronDown className="w-3.5 h-3.5 text-blue-200" />
             </button>
 
             {isRoleMenuOpen && (

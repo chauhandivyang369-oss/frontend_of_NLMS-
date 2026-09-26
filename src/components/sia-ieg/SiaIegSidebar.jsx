@@ -58,13 +58,13 @@ export default function SiaIegSidebar() {
         id={`sidebar-menu-${item.id}`}
         onClick={() => handleMenuClick(item.id)}
         title={isSidebarCollapsed ? `${item.number} ${item.title}` : undefined}
-        className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium transition-all text-left cursor-pointer group relative ${
+        className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium transition-all text-left cursor-pointer group relative ${
           isActive
-            ? 'bg-[#1B365D] text-white border-l-4 border-[#C5A059] shadow-sm font-bold'
-            : 'text-slate-300 hover:text-white hover:bg-slate-800/70 border-l-4 border-transparent'
+            ? 'bg-[#12243F] text-white border-l-4 border-[#C5A059] shadow-xs font-bold'
+            : 'text-blue-100 hover:text-white hover:bg-[#234575] border-l-4 border-transparent'
         }`}
       >
-        <div className={`shrink-0 ${isActive ? 'text-[#E6CA85]' : 'text-slate-400 group-hover:text-slate-200'}`}>
+        <div className={`shrink-0 ${isActive ? 'text-[#E6CA85]' : 'text-blue-200 group-hover:text-white'}`}>
           <IconComponent className="w-4 h-4" />
         </div>
 
@@ -73,8 +73,8 @@ export default function SiaIegSidebar() {
             <span className="truncate">{item.title}</span>
             <span className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded shrink-0 ml-2 ${
               isActive 
-                ? 'bg-[#C5A059]/30 text-[#E6CA85] border border-[#C5A059]/40' 
-                : 'bg-slate-800 text-slate-400'
+                ? 'bg-[#C5A059] text-slate-950 font-black' 
+                : 'bg-white/10 text-blue-200'
             }`}>
               {item.number}
             </span>
@@ -83,7 +83,7 @@ export default function SiaIegSidebar() {
 
         {/* Tooltip for collapsed state */}
         {isSidebarCollapsed && (
-          <div className="absolute left-full ml-2 px-2.5 py-1 bg-slate-900 text-white text-xs font-semibold rounded shadow-xl border border-slate-700 whitespace-nowrap hidden group-hover:block z-50 pointer-events-none">
+          <div className="absolute left-full ml-2 px-2.5 py-1 bg-[#142947] text-white text-xs font-semibold rounded-md shadow-xl border border-blue-800/40 whitespace-nowrap hidden group-hover:block z-50 pointer-events-none">
             <span className="font-mono text-[#E6CA85] mr-1.5">{item.number}</span>
             {item.title}
           </div>
@@ -93,37 +93,37 @@ export default function SiaIegSidebar() {
   };
 
   const sidebarContent = (
-    <div className="flex flex-col h-full bg-[#0F2342] text-slate-100 border-r border-slate-700/70 select-none">
+    <div className="flex flex-col h-full bg-[#1B365D] text-slate-100 border-r border-blue-900/40 select-none">
       
       {/* Mobile Drawer Header */}
-      <div className="md:hidden flex items-center justify-between p-3 border-b border-slate-700">
+      <div className="md:hidden flex items-center justify-between p-3.5 border-b border-blue-900/50 bg-[#142947]">
         <div className="flex items-center gap-2">
           <span className="text-xs font-bold text-white uppercase font-mono">
-            SIA & IEG NAVIGATION
+            SIA &amp; IEG NAVIGATION
           </span>
         </div>
         <button
           onClick={() => setIsMobileSidebarOpen(false)}
-          className="p-1 rounded text-slate-400 hover:text-white hover:bg-slate-800 cursor-pointer"
+          className="p-1 rounded-md bg-white/10 text-blue-100 hover:text-white cursor-pointer"
         >
           <X className="w-4 h-4" />
         </button>
       </div>
 
       {/* Nav List */}
-      <div className="flex-1 overflow-y-auto px-2.5 py-3 space-y-4">
+      <div className="flex-1 overflow-y-auto px-2.5 py-3 space-y-4 scrollbar-thin scrollbar-thumb-blue-300/30">
         
         {/* GROUP 1: SIA OPERATIONS */}
         <div>
           {!isSidebarCollapsed ? (
-            <div className="px-3 pb-1.5 text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold flex items-center justify-between">
+            <div className="px-3 pb-1.5 text-[10px] font-mono uppercase tracking-wider text-blue-200 font-bold flex items-center justify-between">
               <span>SIA OPERATIONS</span>
-              <span className="text-[9px] bg-slate-800/90 text-[#E6CA85] px-1.5 py-0.2 rounded font-semibold border border-slate-700">
+              <span className="text-[9px] bg-white/10 text-[#E6CA85] px-1.5 py-0.2 rounded font-semibold border border-white/20">
                 SEC 4-6
               </span>
             </div>
           ) : (
-            <div className="border-t border-slate-700/60 my-2 mx-1" title="SIA OPERATIONS" />
+            <div className="border-t border-blue-300/20 my-2 mx-1" title="SIA OPERATIONS" />
           )}
 
           <div className="space-y-1">
@@ -134,14 +134,14 @@ export default function SiaIegSidebar() {
         {/* GROUP 2: IEG EVALUATION */}
         <div className="pt-2">
           {!isSidebarCollapsed ? (
-            <div className="px-3 pb-1.5 text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold flex items-center justify-between border-t border-slate-700/60 pt-3">
+            <div className="px-3 pb-1.5 text-[10px] font-mono uppercase tracking-wider text-blue-200 font-bold flex items-center justify-between border-t border-blue-300/25 pt-3">
               <span>IEG EVALUATION</span>
-              <span className="text-[9px] bg-slate-800/90 text-[#E6CA85] px-1.5 py-0.2 rounded font-semibold border border-slate-700">
+              <span className="text-[9px] bg-white/10 text-[#E6CA85] px-1.5 py-0.2 rounded font-semibold border border-white/20">
                 SEC 7-9
               </span>
             </div>
           ) : (
-            <div className="border-t border-slate-700/60 my-2 mx-1" title="IEG EVALUATION" />
+            <div className="border-t border-blue-300/20 my-2 mx-1" title="IEG EVALUATION" />
           )}
 
           <div className="space-y-1">
@@ -149,25 +149,6 @@ export default function SiaIegSidebar() {
           </div>
         </div>
 
-      </div>
-
-      {/* Footer / Collapse Toggle */}
-      <div className="p-2 border-t border-slate-700/80 hidden md:block">
-        <button
-          id="sia-ieg-sidebar-collapse-toggle"
-          onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-          className="w-full flex items-center justify-center gap-2 p-2 rounded-lg bg-slate-800/80 hover:bg-slate-700/90 text-slate-300 hover:text-white transition-colors text-xs font-semibold cursor-pointer"
-          title={isSidebarCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
-        >
-          {isSidebarCollapsed ? (
-            <ChevronRight className="w-4 h-4 text-[#C5A059]" />
-          ) : (
-            <>
-              <ChevronLeft className="w-4 h-4 text-[#C5A059]" />
-              <span className="text-[11px] font-mono text-slate-300">COLLAPSE SIDEBAR</span>
-            </>
-          )}
-        </button>
       </div>
 
     </div>
@@ -179,7 +160,7 @@ export default function SiaIegSidebar() {
       <aside 
         id="sia-ieg-desktop-sidebar"
         className={`hidden md:block shrink-0 transition-all duration-200 h-[calc(100vh-3.5rem)] sticky top-14 ${
-          isSidebarCollapsed ? 'w-16' : 'w-64'
+          isSidebarCollapsed ? 'w-16' : 'w-72 xl:w-80'
         }`}
       >
         {sidebarContent}

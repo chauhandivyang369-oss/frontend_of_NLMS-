@@ -72,6 +72,7 @@ export function LarrAuthorityProvider({ children }) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isRightPanelOpen, setIsRightPanelOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
 
   // Global Toast Dispatcher
@@ -216,6 +217,8 @@ export function LarrAuthorityProvider({ children }) {
     setIsRightPanelOpen,
     isSidebarOpen,
     setIsSidebarOpen,
+    isSidebarCollapsed,
+    setIsSidebarCollapsed,
     toastMessage,
     showToast,
     registerCase,

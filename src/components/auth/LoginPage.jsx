@@ -108,11 +108,35 @@ export default function LoginPage({
     }
   };
 
-  const handleQuickFill = (acc) => {
+  // Quick-fill category filter state
+  const [quickFillTab, setQuickFillTab] = useState('all'); // 'all' | 'gov' | 'project' | 'social'
+
+  const handleQuickFill = (acc, autoLogin = false) => {
     setEmail(acc.email);
     setPassword(acc.passwordHash);
     setErrorMessage('');
     setPendingUser(null);
+    if (autoLogin) {
+      setIsLoading(true);
+      authenticateCredentials(acc.email, acc.passwordHash).then(res => {
+        setIsLoading(false);
+        if (res.success) {
+          if (res.hasMultipleWorkspaces && res.user.workspaces.length > 1) {
+            setMultiWorkspaceData({
+              user: res.user,
+              workspaces: res.user.workspaces
+            });
+          } else {
+            onLoginSuccess(res.user.primaryWorkspace, res.user);
+          }
+        } else {
+          setErrorMessage(res.error || 'Authentication failed');
+        }
+      }).catch(() => {
+        setIsLoading(false);
+        setErrorMessage('Failed to sign in. Please try again.');
+      });
+    }
   };
 
   const handleAdminApproveAndLogin = (user) => {
@@ -434,39 +458,132 @@ export default function LoginPage({
                     </button>
                   </div>
 
-                  {/* Quick Official Demo Accounts Picker */}
+                  {/* Quick Official Master Workspace Accounts Picker */}
                   <div className="mt-5 pt-3 border-t border-slate-200 bg-slate-50 -mx-6 -mb-6 p-4 rounded-b-2xl">
-                    <div className="text-[11px] font-bold text-slate-700 flex items-center justify-between mb-2">
-                      <span className="flex items-center gap-1">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2.5">
+                      <span className="flex items-center gap-1.5 text-[11px] font-bold text-slate-800 font-serif">
                         <KeyRound className="w-3.5 h-3.5 text-[#C5A059]" />
-                        <span>Quick-Fill Official Workspace Credentials:</span>
+                        <span>Quick-Fill Master Workspace Credentials:</span>
                       </span>
-                      <span className="text-[10px] text-slate-500 font-mono">Password: Admin@123</span>
+                      <span className="text-[10px] text-slate-500 font-mono bg-white px-2 py-0.5 rounded border border-slate-200">
+                        Default Password: Admin@123
+                      </span>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-1.5 text-[11px]">
-                      {PRE_SEEDED_ACCOUNTS.slice(0, 6).map((acc) => (
-                        <button
-                          key={acc.id}
-                          type="button"
-                          onClick={() => handleQuickFill(acc)}
-                          className="p-1.5 text-left rounded bg-white hover:bg-amber-50 border border-slate-200 hover:border-[#C5A059] transition-all cursor-pointer truncate"
-                          title={`${acc.role} (${acc.organization})`}
-                        >
-                          <div className="font-semibold text-slate-800 truncate">{acc.role}</div>
-                          <div className="text-[10px] text-slate-500 font-mono truncate">{acc.email}</div>
-                        </button>
-                      ))}
+                    {/* Filter Pills */}
+                    <div className="flex items-center gap-1 mb-2.5 overflow-x-auto pb-1 text-[10px]">
+                      <button
+                        type="button"
+                        onClick={() => setQuickFillTab('all')}
+                        className={`px-2 py-0.5 rounded font-bold transition-colors cursor-pointer ${
+                          quickFillTab === 'all'
+                            ? 'bg-[#1B365D] text-white'
+                            : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                        }`}
+                      >
+                        All Workspaces (10)
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setQuickFillTab('gov')}
+                        className={`px-2 py-0.5 rounded font-bold transition-colors cursor-pointer ${
+                          quickFillTab === 'gov'
+                            ? 'bg-[#1B365D] text-white'
+                            : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                        }`}
+                      >
+                        Govt &amp; CALA (3)
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setQuickFillTab('project')}
+                        className={`px-2 py-0.5 rounded font-bold transition-colors cursor-pointer ${
+                          quickFillTab === 'project'
+                            ? 'bg-[#1B365D] text-white'
+                            : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                        }`}
+                      >
+                        Project &amp; SIA (3)
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setQuickFillTab('social')}
+                        className={`px-2 py-0.5 rounded font-bold transition-colors cursor-pointer ${
+                          quickFillTab === 'social'
+                            ? 'bg-[#1B365D] text-white'
+                            : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                        }`}
+                      >
+                        R&amp;R, Tribunal &amp; Citizen (4)
+                      </button>
                     </div>
 
-                    <button
-                      type="button"
-                      onClick={() => handleQuickFill(PRE_SEEDED_ACCOUNTS.find(a => a.id === 'usr_multi_01'))}
-                      className="w-full mt-2 p-1.5 text-left rounded bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-900 transition-all cursor-pointer flex items-center justify-between text-[11px]"
-                    >
-                      <span className="font-semibold">⚡ Multi-Workspace Officer (Central Govt + Policy Maker)</span>
-                      <span className="text-[10px] font-mono">multi.officer@gov.in</span>
-                    </button>
+                    {/* Filtered Workspace Accounts Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[11px] max-h-56 overflow-y-auto pr-0.5">
+                      {PRE_SEEDED_ACCOUNTS.filter(acc => {
+                        if (quickFillTab === 'gov') {
+                          return ['central-appropriate-gov', 'state-appropriate-gov', 'district-collector'].includes(acc.primaryWorkspace);
+                        }
+                        if (quickFillTab === 'project') {
+                          return ['requiring-body', 'policy-maker', 'sia-ieg'].includes(acc.primaryWorkspace);
+                        }
+                        if (quickFillTab === 'social') {
+                          return ['rr-authority', 'larr-authority', 'citizen'].includes(acc.primaryWorkspace) || acc.id === 'usr_multi_01';
+                        }
+                        return true;
+                      }).map((acc) => {
+                        const isMulti = acc.id === 'usr_multi_01';
+                        return (
+                          <div
+                            key={acc.id}
+                            className={`p-2 rounded-lg bg-white border transition-all flex flex-col justify-between ${
+                              email === acc.email
+                                ? 'border-[#1B365D] ring-1 ring-[#1B365D] bg-blue-50/40'
+                                : 'border-slate-200 hover:border-[#C5A059]'
+                            }`}
+                          >
+                            <div>
+                              <div className="flex items-center justify-between gap-1 mb-1">
+                                <span className={`text-[9px] font-mono font-bold px-1.5 py-0.2 rounded ${
+                                  isMulti 
+                                    ? 'bg-purple-100 text-purple-900 border border-purple-200' 
+                                    : 'bg-slate-100 text-[#1B365D] border border-slate-200'
+                                }`}>
+                                  {isMulti ? 'Multi-Workspace' : acc.userType}
+                                </span>
+                                <span className="text-[9px] text-slate-400 font-mono">
+                                  {acc.state}
+                                </span>
+                              </div>
+                              <div className="font-bold text-slate-900 text-xs truncate">
+                                {acc.role}
+                              </div>
+                              <div className="text-[10px] text-slate-500 font-mono truncate">
+                                {acc.email}
+                              </div>
+                            </div>
+
+                            <div className="flex items-center gap-1.5 mt-2 pt-1.5 border-t border-slate-100">
+                              <button
+                                type="button"
+                                onClick={() => handleQuickFill(acc, false)}
+                                className="flex-1 py-1 px-1.5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-bold transition-colors cursor-pointer text-center"
+                              >
+                                Fill Form
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => handleQuickFill(acc, true)}
+                                className="py-1 px-2 rounded bg-[#1B365D] hover:bg-[#132742] text-white text-[10px] font-bold transition-colors cursor-pointer flex items-center justify-center gap-1"
+                                title="Instant Login to this Workspace"
+                              >
+                                <span>⚡ Login</span>
+                              </button>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
 
                 </div>

@@ -52,19 +52,19 @@ export default function ExecutiveDashboardPage() {
   const totalAreaSum = parcels.reduce((sum, p) => sum + (p.areaHa || 0), 0);
 
   return (
-    <div className="p-6 space-y-6 max-w-7xl mx-auto font-sans">
+    <div className="p-3 sm:p-5 lg:p-6 space-y-4 sm:space-y-6 max-w-7xl mx-auto font-sans min-w-0">
       {/* Top Banner with District Collector Seal */}
-      <div className="bg-white border-l-4 border-[#C5A059] p-4 shadow-xs flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2">
+      <div className="bg-white border-l-4 border-[#C5A059] p-3.5 sm:p-4 shadow-xs flex flex-wrap items-center justify-between gap-3 sm:gap-4">
+        <div className="min-w-0">
+          <div className="flex items-center gap-2 flex-wrap">
             <span className="text-[10px] bg-slate-900 text-[#C5A059] font-mono px-2 py-0.5 font-bold uppercase">
               DISTRICT CALA APEX RADAR
             </span>
-            <span className="text-xs text-slate-500 font-medium">
+            <span className="text-xs text-slate-500 font-medium truncate">
               Statutory Jurisdiction: {activeDistrict?.collectorTitle}
             </span>
           </div>
-          <h1 className="text-xl font-bold text-slate-900 mt-1">
+          <h1 className="text-lg sm:text-xl font-bold text-slate-900 mt-1 break-words">
             {activeDistrict?.name} Land Acquisition &amp; Multi-Corridor Matrix
           </h1>
           <p className="text-xs text-slate-600 mt-0.5">
@@ -72,37 +72,37 @@ export default function ExecutiveDashboardPage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-3 text-xs">
-          <div className="bg-slate-50 p-2.5 border border-slate-200 text-center">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs">
+          <div className="bg-slate-50 p-2 sm:p-2.5 border border-slate-200 text-center min-w-[90px]">
             <div className="text-[10px] text-slate-400 font-bold uppercase">SLA COMPLIANCE</div>
-            <div className="font-mono font-bold text-emerald-700 text-sm">{activeDistrict?.slaComplianceRate}</div>
+            <div className="font-mono font-bold text-emerald-700 text-xs sm:text-sm">{activeDistrict?.slaComplianceRate}</div>
           </div>
-          <div className="bg-slate-50 p-2.5 border border-slate-200 text-center">
+          <div className="bg-slate-50 p-2 sm:p-2.5 border border-slate-200 text-center min-w-[90px]">
             <div className="text-[10px] text-slate-400 font-bold uppercase">TOTAL ACQUISITION</div>
-            <div className="font-mono font-bold text-slate-900 text-sm">{activeDistrict?.totalAcquisitionHa} Ha</div>
+            <div className="font-mono font-bold text-slate-900 text-xs sm:text-sm">{activeDistrict?.totalAcquisitionHa} Ha</div>
           </div>
-          <div className="bg-slate-50 p-2.5 border border-slate-200 text-center">
+          <div className="bg-slate-50 p-2 sm:p-2.5 border border-slate-200 text-center min-w-[90px]">
             <div className="text-[10px] text-slate-400 font-bold uppercase">DISBURSED (CR)</div>
-            <div className="font-mono font-bold text-blue-900 text-sm">₹{activeDistrict?.disbursedCrores} Cr</div>
+            <div className="font-mono font-bold text-blue-900 text-xs sm:text-sm">₹{activeDistrict?.disbursedCrores} Cr</div>
           </div>
         </div>
       </div>
 
       {/* Section 25 Statutory Lapsing Alert Box (If any project in Warning/Critical) */}
       {activeProject && activeProject.daysRemainingSec25 < 180 && (
-        <div className="bg-amber-50 border-l-4 border-amber-600 p-4 shadow-xs flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <div className="bg-amber-50 border-l-4 border-amber-600 p-3.5 sm:p-4 shadow-xs flex flex-wrap sm:flex-nowrap items-center justify-between gap-3">
+          <div className="flex items-center gap-3 min-w-0">
             <div className="p-2 bg-amber-100 border border-amber-300 text-amber-900 shrink-0">
               <Clock className="w-5 h-5" />
             </div>
-            <div>
-              <div className="font-bold text-amber-950 text-xs flex items-center gap-2">
+            <div className="min-w-0">
+              <div className="font-bold text-amber-950 text-xs flex flex-wrap items-center gap-2">
                 <span>SECTION 25 STATUTORY COUNTDOWN: {activeProject.name}</span>
                 <span className="bg-amber-600 text-white font-mono px-1.5 py-0.2 text-[10px] font-bold">
                   {activeProject.daysRemainingSec25} DAYS LEFT
                 </span>
               </div>
-              <p className="text-[11px] text-amber-800 mt-0.5">
+              <p className="text-[11px] text-amber-800 mt-0.5 leading-relaxed">
                 Statutory Mandate: If the Section 23 Award is not passed within 12 months from the date of Section 19 declaration ({activeProject.sec19Date}), 
                 the entire acquisition proceeding shall lapse by operation of law.
               </p>
@@ -110,7 +110,7 @@ export default function ExecutiveDashboardPage() {
           </div>
           <button
             onClick={() => setActiveMenuId('sec23-award-engine')}
-            className="px-3 py-1.5 bg-amber-700 hover:bg-amber-800 text-white font-bold text-xs shrink-0 cursor-pointer"
+            className="px-3 py-1.5 bg-amber-700 hover:bg-amber-800 text-white font-bold text-xs shrink-0 cursor-pointer w-full sm:w-auto text-center"
           >
             Formulate Award Now
           </button>
@@ -118,64 +118,64 @@ export default function ExecutiveDashboardPage() {
       )}
 
       {/* District KPI Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4">
         {/* Metric 1 */}
-        <div className="bg-white p-4 border border-slate-200 shadow-xs">
+        <div className="bg-white p-3.5 sm:p-4 border border-slate-200 shadow-xs rounded-lg min-w-0">
           <div className="flex items-center justify-between text-slate-400">
             <span className="text-[10px] font-bold uppercase tracking-wider">ACTIVE CORRIDORS</span>
-            <Layers className="w-4 h-4 text-blue-600" />
+            <Layers className="w-4 h-4 text-blue-600 shrink-0" />
           </div>
-          <div className="text-2xl font-bold font-mono text-slate-900 mt-2">
+          <div className="text-xl sm:text-2xl font-bold font-mono text-slate-900 mt-1.5 truncate">
             {projects.length} Projects
           </div>
-          <div className="text-[11px] text-slate-500 mt-1 flex items-center justify-between">
-            <span>Covering {activeProject?.villagesCount} Villages</span>
-            <span className="font-bold text-blue-700 font-mono">{activeProject?.talukasCovered?.length} Talukas</span>
+          <div className="text-[11px] text-slate-500 mt-1 flex flex-wrap items-center justify-between gap-1">
+            <span className="truncate">Covering {activeProject?.villagesCount} Villages</span>
+            <span className="font-bold text-blue-700 font-mono shrink-0">{activeProject?.talukasCovered?.length} Talukas</span>
           </div>
         </div>
 
         {/* Metric 2 */}
-        <div className="bg-white p-4 border border-slate-200 shadow-xs">
+        <div className="bg-white p-3.5 sm:p-4 border border-slate-200 shadow-xs rounded-lg min-w-0">
           <div className="flex items-center justify-between text-slate-400">
             <span className="text-[10px] font-bold uppercase tracking-wider">CADASTRAL PARCELS</span>
-            <MapPin className="w-4 h-4 text-[#C5A059]" />
+            <MapPin className="w-4 h-4 text-[#C5A059] shrink-0" />
           </div>
-          <div className="text-2xl font-bold font-mono text-slate-900 mt-2">
+          <div className="text-xl sm:text-2xl font-bold font-mono text-slate-900 mt-1.5 truncate">
             {activeProject?.totalParcels} Parcels
           </div>
-          <div className="text-[11px] text-slate-500 mt-1 flex items-center justify-between">
-            <span>Area: {totalAreaSum.toFixed(2)} Ha</span>
-            <span className="font-bold text-emerald-700 font-mono">100% PostGIS Geocoded</span>
+          <div className="text-[11px] text-slate-500 mt-1 flex flex-wrap items-center justify-between gap-1">
+            <span className="truncate">Area: {totalAreaSum.toFixed(2)} Ha</span>
+            <span className="font-bold text-emerald-700 font-mono shrink-0">100% PostGIS Geocoded</span>
           </div>
         </div>
 
         {/* Metric 3 */}
-        <div className="bg-white p-4 border border-slate-200 shadow-xs">
+        <div className="bg-white p-3.5 sm:p-4 border border-slate-200 shadow-xs rounded-lg min-w-0">
           <div className="flex items-center justify-between text-slate-400">
             <span className="text-[10px] font-bold uppercase tracking-wider">TOTAL KHATEDARS</span>
-            <Users className="w-4 h-4 text-purple-600" />
+            <Users className="w-4 h-4 text-purple-600 shrink-0" />
           </div>
-          <div className="text-2xl font-bold font-mono text-slate-900 mt-2">
+          <div className="text-xl sm:text-2xl font-bold font-mono text-slate-900 mt-1.5 truncate">
             {activeProject?.totalKhatedars} Khatedars
           </div>
-          <div className="text-[11px] text-slate-500 mt-1 flex items-center justify-between">
-            <span>Direct Benefit Transfer</span>
-            <span className="font-bold text-purple-700 font-mono">PFMS / DBT Active</span>
+          <div className="text-[11px] text-slate-500 mt-1 flex flex-wrap items-center justify-between gap-1">
+            <span className="truncate">Direct Benefit Transfer</span>
+            <span className="font-bold text-purple-700 font-mono shrink-0">PFMS / DBT Active</span>
           </div>
         </div>
 
         {/* Metric 4 */}
-        <div className="bg-white p-4 border border-slate-200 shadow-xs">
+        <div className="bg-white p-3.5 sm:p-4 border border-slate-200 shadow-xs rounded-lg min-w-0">
           <div className="flex items-center justify-between text-slate-400">
             <span className="text-[10px] font-bold uppercase tracking-wider">COMPENSATION POOL</span>
-            <Coins className="w-4 h-4 text-emerald-600" />
+            <Coins className="w-4 h-4 text-emerald-600 shrink-0" />
           </div>
-          <div className="text-xl font-bold font-mono text-emerald-800 mt-2">
+          <div className="text-lg sm:text-xl font-bold font-mono text-emerald-800 mt-1.5 truncate" title={formatIndianCurrency(totalCompensationSum)}>
             {formatIndianCurrency(totalCompensationSum)}
           </div>
-          <div className="text-[11px] text-slate-500 mt-1 flex items-center justify-between">
-            <span>Disbursed: {formatIndianCurrency(totalDisbursedSum)}</span>
-            <span className="font-bold text-emerald-700 font-mono">
+          <div className="text-[11px] text-slate-500 mt-1 flex flex-wrap items-center justify-between gap-1">
+            <span className="truncate">Disbursed: {formatIndianCurrency(totalDisbursedSum)}</span>
+            <span className="font-bold text-emerald-700 font-mono shrink-0">
               {totalCompensationSum > 0 ? Math.round((totalDisbursedSum / totalCompensationSum) * 100) : 0}%
             </span>
           </div>

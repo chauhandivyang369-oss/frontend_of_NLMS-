@@ -35,6 +35,8 @@ export function DistrictCollectorProvider({ children, onSwitchWorkspace }) {
   const [selectedAwardId, setSelectedAwardId] = useState(null);
 
   // Drawers & Modals
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [drawerType, setDrawerType] = useState('parcel'); // 'parcel' | 'project' | 'objection' | 'delegation' | 'audit'
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -227,6 +229,11 @@ export function DistrictCollectorProvider({ children, onSwitchWorkspace }) {
     selectedParcel,
     selectedParcelId,
     setSelectedParcelId,
+
+    isSidebarOpen,
+    setIsSidebarOpen,
+    isSidebarCollapsed,
+    setIsSidebarCollapsed,
 
     isDrawerOpen,
     setIsDrawerOpen,

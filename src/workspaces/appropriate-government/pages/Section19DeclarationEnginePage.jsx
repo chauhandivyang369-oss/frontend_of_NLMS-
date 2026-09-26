@@ -129,10 +129,10 @@ export default function Section19DeclarationEnginePage() {
       </div>
 
       {/* Internal Navigation Tabs (8 Dedicated Sub-views) */}
-      <div className="flex flex-wrap items-center gap-1 border-b border-slate-200 text-xs font-semibold">
+      <div className="flex items-center gap-1 border-b border-slate-200 text-xs font-semibold overflow-x-auto whitespace-nowrap pb-1">
         <button
           onClick={() => setActiveTab('eligibility')}
-          className={`px-3 py-2 border-b-2 transition-all cursor-pointer ${
+          className={`px-3 py-2 border-b-2 transition-all cursor-pointer shrink-0 ${
             activeTab === 'eligibility'
               ? 'border-[#1B365D] text-[#1B365D] bg-slate-50 font-bold'
               : 'border-transparent text-slate-500 hover:text-slate-900'
@@ -143,7 +143,7 @@ export default function Section19DeclarationEnginePage() {
 
         <button
           onClick={() => setActiveTab('financial-deposit')}
-          className={`px-3 py-2 border-b-2 transition-all cursor-pointer ${
+          className={`px-3 py-2 border-b-2 transition-all cursor-pointer shrink-0 ${
             activeTab === 'financial-deposit'
               ? 'border-[#1B365D] text-[#1B365D] bg-slate-50 font-bold'
               : 'border-transparent text-slate-500 hover:text-slate-900'
@@ -154,7 +154,7 @@ export default function Section19DeclarationEnginePage() {
 
         <button
           onClick={() => setActiveTab('rnr-summary')}
-          className={`px-3 py-2 border-b-2 transition-all cursor-pointer ${
+          className={`px-3 py-2 border-b-2 transition-all cursor-pointer shrink-0 ${
             activeTab === 'rnr-summary'
               ? 'border-[#1B365D] text-[#1B365D] bg-slate-50 font-bold'
               : 'border-transparent text-slate-500 hover:text-slate-900'
@@ -165,7 +165,7 @@ export default function Section19DeclarationEnginePage() {
 
         <button
           onClick={() => setActiveTab('builder')}
-          className={`px-3 py-2 border-b-2 transition-all cursor-pointer ${
+          className={`px-3 py-2 border-b-2 transition-all cursor-pointer shrink-0 ${
             activeTab === 'builder'
               ? 'border-[#1B365D] text-[#1B365D] bg-slate-50 font-bold'
               : 'border-transparent text-slate-500 hover:text-slate-900'
@@ -176,7 +176,7 @@ export default function Section19DeclarationEnginePage() {
 
         <button
           onClick={() => setActiveTab('lapsing-clock')}
-          className={`px-3 py-2 border-b-2 transition-all cursor-pointer ${
+          className={`px-3 py-2 border-b-2 transition-all cursor-pointer shrink-0 ${
             activeTab === 'lapsing-clock'
               ? 'border-[#1B365D] text-[#1B365D] bg-slate-50 font-bold'
               : 'border-transparent text-slate-500 hover:text-slate-900'
@@ -187,7 +187,7 @@ export default function Section19DeclarationEnginePage() {
 
         <button
           onClick={() => setActiveTab('court-stay')}
-          className={`px-3 py-2 border-b-2 transition-all cursor-pointer ${
+          className={`px-3 py-2 border-b-2 transition-all cursor-pointer shrink-0 ${
             activeTab === 'court-stay'
               ? 'border-[#1B365D] text-[#1B365D] bg-slate-50 font-bold'
               : 'border-transparent text-slate-500 hover:text-slate-900'
@@ -198,7 +198,7 @@ export default function Section19DeclarationEnginePage() {
 
         <button
           onClick={() => setActiveTab('extension')}
-          className={`px-3 py-2 border-b-2 transition-all cursor-pointer ${
+          className={`px-3 py-2 border-b-2 transition-all cursor-pointer shrink-0 ${
             activeTab === 'extension'
               ? 'border-[#1B365D] text-[#1B365D] bg-slate-50 font-bold'
               : 'border-transparent text-slate-500 hover:text-slate-900'
@@ -209,7 +209,7 @@ export default function Section19DeclarationEnginePage() {
 
         <button
           onClick={() => setActiveTab('publication-matrix')}
-          className={`px-3 py-2 border-b-2 transition-all cursor-pointer ${
+          className={`px-3 py-2 border-b-2 transition-all cursor-pointer shrink-0 ${
             activeTab === 'publication-matrix'
               ? 'border-[#1B365D] text-[#1B365D] bg-slate-50 font-bold'
               : 'border-transparent text-slate-500 hover:text-slate-900'

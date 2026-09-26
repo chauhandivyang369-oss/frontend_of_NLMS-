@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PublicTopUtilityBar from './PublicTopUtilityBar.jsx';
 import PublicHeader from './PublicHeader.jsx';
 import LandingHeroSection from './LandingHeroSection.jsx';
 import NationalMetricsSection from './NationalMetricsSection.jsx';
@@ -57,17 +56,7 @@ export default function LandingPage({
   return (
     <div className={`min-h-screen flex flex-col bg-[#FAF8F5] text-slate-900 font-sans ${textSizeClass} ${contrastClass}`}>
       
-      {/* 1. Public Top Utility Bar */}
-      <PublicTopUtilityBar
-        textSize={textSize}
-        setTextSize={setTextSize}
-        highContrast={highContrast}
-        setHighContrast={setHighContrast}
-        selectedLanguage={selectedLanguage}
-        setSelectedLanguage={setSelectedLanguage}
-      />
-
-      {/* 2. Public Government Header */}
+      {/* Top Nav Bar */}
       <PublicHeader
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -75,7 +64,7 @@ export default function LandingPage({
         onLaunchCitizenWorkspace={handleOpenSignUp}
       />
 
-      {/* 3. Main Body Content Based on Active Tab */}
+      {/* Main Body Content Based on Active Tab */}
       <main id="main-content" className="flex-1">
         {activeTab === 'overview' && (
           <>

@@ -13,7 +13,8 @@ import {
   ChevronRight,
   ChevronLeft,
   Lock,
-  X
+  X,
+  Menu
 } from 'lucide-react';
 
 export default function PolicyMakerSidebar({ 
@@ -117,13 +118,13 @@ export default function PolicyMakerSidebar({
   // Collapsed Sidebar View (Desktop Icon-only)
   if (isCollapsed) {
     return (
-      <aside className="hidden md:flex w-16 bg-[#142642] border-r border-slate-700/80 flex-col items-center py-4 select-none shrink-0 z-30">
+      <aside className="hidden md:flex w-16 bg-[#1B365D] border-r border-blue-900/40 flex-col items-center py-4 select-none shrink-0 z-30">
         <button
           onClick={() => setIsCollapsed(false)}
-          className="p-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition-colors cursor-pointer mb-6"
+          className="p-1.5 rounded-lg bg-[#142947] hover:bg-[#203D66] text-blue-100 hover:text-white transition-colors cursor-pointer mb-6"
           title="Expand Sidebar"
         >
-          <ChevronRight className="w-5 h-5 text-[#C5A059]" />
+          <Menu className="w-5 h-5 text-[#C5A059]" />
         </button>
 
         <div className="flex flex-col gap-2.5 w-full px-2">
@@ -140,8 +141,8 @@ export default function PolicyMakerSidebar({
                 }}
                 className={`w-full p-2.5 rounded-lg flex items-center justify-center transition-colors cursor-pointer relative group ${
                   isSelected 
-                    ? 'bg-[#1B365D] text-white border-2 border-[#C5A059]' 
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                    ? 'bg-[#12243F] text-white border-2 border-[#C5A059]' 
+                    : 'text-blue-200 hover:text-white hover:bg-[#142947]'
                 }`}
                 title={`${mod.number}. ${mod.title}`}
               >
@@ -149,7 +150,7 @@ export default function PolicyMakerSidebar({
                 {mod.badge && (
                   <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-rose-500"></span>
                 )}
-                <div className="absolute left-full ml-2 hidden group-hover:block z-50 whitespace-nowrap bg-[#0F1E33] text-white text-xs px-2.5 py-1 rounded shadow-lg border border-slate-700">
+                <div className="absolute left-full ml-2 hidden group-hover:block z-50 whitespace-nowrap bg-[#142947] text-white text-xs px-2.5 py-1 rounded-md shadow-lg border border-blue-800/40">
                   <span className="font-mono text-[#C5A059] mr-1.5">{mod.number}</span>
                   {mod.title}
                 </div>
@@ -162,9 +163,9 @@ export default function PolicyMakerSidebar({
   }
 
   const sidebarContent = (
-    <div className="flex flex-col h-full bg-[#142642] text-slate-200 select-none border-r border-slate-700/80">
+    <div className="flex flex-col h-full bg-[#1B365D] text-slate-100 select-none border-r border-blue-900/40">
       {/* Sidebar Header */}
-      <div className="p-3 border-b border-slate-800 bg-[#0D1829] flex items-center justify-between shrink-0">
+      <div className="p-3.5 border-b border-blue-900/50 bg-[#142947] flex items-center justify-between shrink-0">
         <div>
           <div className="text-[10px] uppercase font-bold text-[#C5A059] tracking-wider flex items-center gap-1.5">
             <span className="w-2 h-2 bg-[#C5A059]" />
@@ -180,7 +181,7 @@ export default function PolicyMakerSidebar({
           {setIsMobileOpen && (
             <button
               onClick={() => setIsMobileOpen(false)}
-              className="md:hidden p-1 rounded bg-slate-800 text-slate-400 hover:text-white"
+              className="md:hidden p-1 rounded-md bg-white/10 text-blue-100 hover:text-white cursor-pointer"
               title="Close Menu"
             >
               <X className="w-4 h-4" />
@@ -188,16 +189,16 @@ export default function PolicyMakerSidebar({
           )}
           <button
             onClick={() => setIsCollapsed(true)}
-            className="hidden md:block p-1 text-slate-400 hover:text-white rounded hover:bg-slate-800 transition-colors cursor-pointer"
+            className="hidden md:block p-1 text-blue-200 hover:text-white rounded-md hover:bg-white/10 transition-colors cursor-pointer"
             title="Collapse Sidebar"
           >
-            <ChevronLeft className="w-4 h-4" />
+            <Menu className="w-4 h-4 text-[#C5A059]" />
           </button>
         </div>
       </div>
 
       {/* 8 Main Modules Navigation List (Clean, No sub-menus) */}
-      <nav className="flex-1 overflow-y-auto py-2 px-2 space-y-1">
+      <nav className="flex-1 overflow-y-auto p-2 space-y-1 scrollbar-thin scrollbar-thumb-blue-300/30">
         {modules.map((mod) => {
           const Icon = mod.icon;
           const isSelected = activeModule === mod.id;
@@ -207,12 +208,12 @@ export default function PolicyMakerSidebar({
             return (
               <div
                 key={mod.id}
-                className="p-2.5 rounded opacity-40 text-slate-500 flex items-center justify-between text-xs cursor-not-allowed border border-transparent"
+                className="p-2.5 rounded-lg opacity-40 text-blue-300/50 flex items-center justify-between text-xs cursor-not-allowed border border-transparent"
                 title="Unauthorized under current committee scope"
               >
                 <div className="flex items-center gap-2.5 min-w-0">
-                  <Icon className="w-4 h-4 text-slate-600 shrink-0" />
-                  <span className="font-mono text-[10px] text-slate-600">{mod.number}</span>
+                  <Icon className="w-4 h-4 text-blue-300/40 shrink-0" />
+                  <span className="font-mono text-[10px] text-blue-300/40">{mod.number}</span>
                   <span className="truncate text-xs">{mod.title}</span>
                 </div>
                 <Lock className="w-3.5 h-3.5 shrink-0" />
@@ -224,20 +225,20 @@ export default function PolicyMakerSidebar({
             <button
               key={mod.id}
               onClick={() => handleSelectModule(mod.id, mod.defaultSubPage)}
-              className={`w-full flex items-center justify-between px-3 py-2.5 rounded text-xs font-semibold cursor-pointer transition-all border-l-3 text-left ${
+              className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold cursor-pointer transition-all border-l-4 text-left ${
                 isSelected
-                  ? 'bg-[#1B365D] text-white border-[#C5A059] shadow-sm'
-                  : 'border-transparent text-slate-300 hover:bg-slate-800/70 hover:text-white'
+                  ? 'bg-[#12243F] text-white border-[#C5A059] shadow-xs'
+                  : 'border-transparent text-blue-100 hover:bg-[#234575] hover:text-white'
               }`}
             >
               <div className="flex items-center gap-2.5 min-w-0">
-                <span className={`w-5 h-5 flex items-center justify-center text-[10px] font-mono font-bold shrink-0 rounded ${
-                  isSelected ? 'bg-[#C5A059] text-slate-950 font-black' : 'bg-slate-800 text-slate-400'
+                <span className={`w-5 h-5 flex items-center justify-center text-[10px] font-mono font-bold shrink-0 rounded-md ${
+                  isSelected ? 'bg-[#C5A059] text-slate-950 font-black' : 'bg-white/10 text-blue-200'
                 }`}>
                   {mod.number}
                 </span>
 
-                <Icon className={`w-4 h-4 shrink-0 ${isSelected ? 'text-[#C5A059]' : 'text-slate-400'}`} />
+                <Icon className={`w-4 h-4 shrink-0 ${isSelected ? 'text-[#C5A059]' : 'text-blue-200'}`} />
 
                 <span className="truncate text-xs font-medium">{mod.title}</span>
               </div>
@@ -253,12 +254,12 @@ export default function PolicyMakerSidebar({
       </nav>
 
       {/* Role Notice at Bottom */}
-      <div className="p-3 bg-[#0D1829] border-t border-slate-800 text-[10px] text-slate-400 shrink-0">
+      <div className="p-3.5 bg-[#142947] border-t border-blue-900/50 text-[10px] text-blue-100 shrink-0">
         <div className="flex items-center justify-between font-mono">
           <span className="text-[#C5A059] font-bold">{currentRoleConfig?.badgeText || 'NATIONAL COMMITTEE'}</span>
-          <span className="text-slate-500">Sec 45/48/50</span>
+          <span className="text-blue-300/60">Sec 45/48/50</span>
         </div>
-        <div className="text-slate-300 text-[10px] truncate mt-0.5 font-medium">
+        <div className="text-white text-[10px] truncate mt-0.5 font-medium">
           {currentRoleConfig?.title || 'Policy Maker & Executive'}
         </div>
       </div>
@@ -268,7 +269,7 @@ export default function PolicyMakerSidebar({
   return (
     <>
       {/* Desktop Persistent Sidebar */}
-      <aside className="hidden md:flex w-64 flex-col shrink-0 z-30">
+      <aside className="hidden md:flex w-72 xl:w-80 flex-col shrink-0 z-30">
         {sidebarContent}
       </aside>
 

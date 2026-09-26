@@ -10,7 +10,7 @@ export default function PublicTopUtilityBar({
   setSelectedLanguage
 }) {
   return (
-    <div className="bg-[#0f1f38] text-slate-200 border-b border-slate-700/80 text-[11px] font-sans">
+    <div className="bg-[#142947] text-slate-100 border-b border-blue-900/50 text-[11px] font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 flex flex-wrap items-center justify-between gap-3">
         
         {/* Left: Indian Flag Colors & Government Identification */}
@@ -23,14 +23,14 @@ export default function PublicTopUtilityBar({
               </span>
               <span className="block h-1/3 bg-[#138808]"></span>
             </span>
-            <span className="font-semibold text-slate-100 tracking-wide">भारत सरकार</span>
-            <span className="text-slate-500">|</span>
-            <span className="text-slate-300 font-medium">Government of India</span>
+            <span className="font-semibold text-white tracking-wide">भारत सरकार</span>
+            <span className="text-blue-300/40">|</span>
+            <span className="text-blue-100 font-medium">Government of India</span>
           </div>
 
-          <span className="hidden md:inline text-slate-600">·</span>
+          <span className="hidden md:inline text-blue-300/40">·</span>
 
-          <span className="hidden md:inline text-slate-300">
+          <span className="hidden md:inline text-blue-100">
             Ministry of Rural Development • Department of Land Resources (DoLR)
           </span>
         </div>
@@ -47,16 +47,16 @@ export default function PublicTopUtilityBar({
             </a>
           </div>
 
-          <span className="hidden sm:inline text-slate-600">·</span>
+          <span className="hidden sm:inline text-blue-300/40">·</span>
 
           {/* Text Size Accessibility Controls */}
-          <div className="flex items-center gap-1 bg-[#1a2d4c] px-1.5 py-0.5 rounded border border-slate-700">
-            <span className="text-slate-400 text-[10px] mr-1 hidden lg:inline">Text Size:</span>
+          <div className="flex items-center gap-1 bg-[#1B365D] px-1.5 py-0.5 rounded border border-blue-800/40">
+            <span className="text-blue-200 text-[10px] mr-1 hidden lg:inline">Text Size:</span>
             <button
               onClick={() => setTextSize('small')}
               title="Decrease Font Size"
               className={`px-1.5 py-0.5 rounded text-[10px] font-bold cursor-pointer transition-colors ${
-                textSize === 'small' ? 'bg-[#C5A059] text-slate-900' : 'text-slate-300 hover:text-white'
+                textSize === 'small' ? 'bg-[#C5A059] text-slate-900' : 'text-blue-100 hover:text-white'
               }`}
             >
               A-
@@ -65,7 +65,7 @@ export default function PublicTopUtilityBar({
               onClick={() => setTextSize('normal')}
               title="Default Font Size"
               className={`px-1.5 py-0.5 rounded text-[10px] font-bold cursor-pointer transition-colors ${
-                textSize === 'normal' ? 'bg-[#C5A059] text-slate-900' : 'text-slate-300 hover:text-white'
+                textSize === 'normal' ? 'bg-[#C5A059] text-slate-900' : 'text-blue-100 hover:text-white'
               }`}
             >
               A
@@ -74,7 +74,7 @@ export default function PublicTopUtilityBar({
               onClick={() => setTextSize('large')}
               title="Increase Font Size"
               className={`px-1.5 py-0.5 rounded text-[10px] font-bold cursor-pointer transition-colors ${
-                textSize === 'large' ? 'bg-[#C5A059] text-slate-900' : 'text-slate-300 hover:text-white'
+                textSize === 'large' ? 'bg-[#C5A059] text-slate-900' : 'text-blue-100 hover:text-white'
               }`}
             >
               A+
@@ -88,7 +88,7 @@ export default function PublicTopUtilityBar({
             className={`flex items-center gap-1 px-2 py-0.5 rounded border text-[10px] cursor-pointer transition-colors ${
               highContrast
                 ? 'bg-amber-400 text-slate-900 font-bold border-amber-300'
-                : 'bg-[#1a2d4c] text-slate-300 border-slate-700 hover:text-white'
+                : 'bg-[#1B365D] text-blue-100 border-blue-800/40 hover:text-white'
             }`}
           >
             <span>Contrast</span>
@@ -103,20 +103,20 @@ export default function PublicTopUtilityBar({
           </a>
 
           {/* Language Switcher */}
-          <div className="flex items-center gap-1.5 bg-[#1a2d4c] px-2 py-0.5 rounded border border-slate-700">
-            <Globe className="w-3 h-3 text-slate-400" />
+          <div className="flex items-center gap-1.5 bg-[#1B365D] px-2 py-0.5 rounded border border-blue-800/40">
+            <Globe className="w-3 h-3 text-blue-200" />
             <select
               value={selectedLanguage}
               onChange={(e) => setSelectedLanguage(e.target.value)}
               aria-label="Select Official Language"
-              className="bg-transparent text-slate-200 text-[11px] focus:outline-none cursor-pointer"
+              className="bg-transparent text-blue-100 text-[11px] focus:outline-none cursor-pointer"
             >
-              <option value="en" className="bg-[#142642] text-white">English</option>
-              <option value="hi" className="bg-[#142642] text-white">हिन्दी (Hindi)</option>
-              <option value="gu" className="bg-[#142642] text-white">ગુજરાતી (Gujarati)</option>
-              <option value="mr" className="bg-[#142642] text-white">मराठी (Marathi)</option>
-              <option value="ta" className="bg-[#142642] text-white">தமிழ் (Tamil)</option>
-              <option value="te" className="bg-[#142642] text-white">తెలుగు (Telugu)</option>
+              <option value="en" className="bg-[#1B365D] text-white">English</option>
+              <option value="hi" className="bg-[#1B365D] text-white">हिन्दी (Hindi)</option>
+              <option value="gu" className="bg-[#1B365D] text-white">ગુજરાતી (Gujarati)</option>
+              <option value="mr" className="bg-[#1B365D] text-white">मराठी (Marathi)</option>
+              <option value="ta" className="bg-[#1B365D] text-white">தமிழ் (Tamil)</option>
+              <option value="te" className="bg-[#1B365D] text-white">తెలుగు (Telugu)</option>
             </select>
           </div>
 
@@ -125,7 +125,7 @@ export default function PublicTopUtilityBar({
       </div>
 
       {/* Statutory Urgent Notice / Gazette Ticker */}
-      <div className="bg-[#0b1626] border-t border-slate-800 px-4 py-1 text-[11px] flex items-center justify-between text-slate-300">
+      <div className="bg-[#10233D] border-t border-blue-900/60 px-4 py-1 text-[11px] flex items-center justify-between text-blue-100">
         <div className="max-w-7xl mx-auto w-full flex items-center gap-2 overflow-hidden">
           <div className="flex items-center gap-1 text-amber-400 shrink-0 font-semibold uppercase text-[10px]">
             <AlertCircle className="w-3 h-3" />

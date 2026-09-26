@@ -167,103 +167,104 @@ export default function ExecutiveDashboard() {
         </div>
 
         {/* 6 Core Metric Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3 sm:gap-4">
           
           {/* Card 1: Active Projects */}
-          <div className="bg-white border border-slate-200/90 rounded-lg p-3 shadow-xs flex flex-col justify-between">
-            <div className="flex items-center justify-between">
-              <span className="text-[10px] font-bold tracking-wider text-slate-500 uppercase">
+          <div className="bg-white border border-slate-200/90 rounded-xl p-3 sm:p-3.5 shadow-xs flex flex-col justify-between hover:shadow-sm transition-shadow">
+            <div className="flex items-center justify-between gap-1">
+              <span className="text-[10px] font-bold tracking-wider text-slate-500 uppercase truncate">
                 Active Projects
               </span>
-              <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.2 rounded-full flex items-center gap-1">
+              <span className="text-[9px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-full flex items-center gap-1 shrink-0">
                 <span className="w-1 h-1 rounded-full bg-emerald-500"></span>
                 Active
               </span>
             </div>
-            <div className="text-3xl font-bold text-slate-900 my-1 font-sans">
+            <div className="text-xl sm:text-2xl font-bold text-slate-900 my-1 font-sans tracking-tight truncate">
               18
             </div>
             <div className="text-[11px] text-slate-500 truncate">
-              of 24 total requisit...
+              24 total requisitions
             </div>
           </div>
 
           {/* Card 2: Pending Requisitions */}
-          <div className="bg-white border border-slate-200/90 rounded-lg p-3 shadow-xs flex flex-col justify-between">
-            <div className="flex items-center justify-between">
-              <span className="text-[10px] font-bold tracking-wider text-slate-500 uppercase">
-                Pending Requisitions
+          <div className="bg-white border border-slate-200/90 rounded-xl p-3 sm:p-3.5 shadow-xs flex flex-col justify-between hover:shadow-sm transition-shadow">
+            <div className="flex items-center justify-between gap-1">
+              <span className="text-[10px] font-bold tracking-wider text-slate-500 uppercase truncate">
+                Pending
               </span>
-              <span className="text-[10px] font-semibold text-amber-800 bg-amber-50 border border-amber-200 px-1.5 py-0.2 rounded-full">
+              <span className="text-[9px] font-semibold text-amber-800 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded-full shrink-0">
                 Action Req.
               </span>
             </div>
-            <div className="text-3xl font-bold text-slate-900 my-1 font-sans">
+            <div className="text-xl sm:text-2xl font-bold text-slate-900 my-1 font-sans tracking-tight truncate">
               6
             </div>
             <div className="text-[11px] text-slate-500 truncate">
-              Require RB actio...
+              Requires RB action
             </div>
           </div>
 
           {/* Card 3: Land Proposed */}
-          <div className="bg-white border border-slate-200/90 rounded-lg p-3 shadow-xs flex flex-col justify-between">
-            <div className="flex items-center justify-between">
-              <span className="text-[10px] font-bold tracking-wider text-slate-500 uppercase">
+          <div className="bg-white border border-slate-200/90 rounded-xl p-3 sm:p-3.5 shadow-xs flex flex-col justify-between hover:shadow-sm transition-shadow">
+            <div className="flex items-center justify-between gap-1">
+              <span className="text-[10px] font-bold tracking-wider text-slate-500 uppercase truncate">
                 Land Proposed
               </span>
-              <Compass className="w-3.5 h-3.5 text-slate-400" />
+              <Compass className="w-3.5 h-3.5 text-slate-400 shrink-0" />
             </div>
-            <div className="text-3xl font-bold text-slate-900 my-1 font-sans">
+            <div className="text-xl sm:text-2xl font-bold text-slate-900 my-1 font-sans tracking-tight truncate">
               4,825.40 <span className="text-xs font-normal text-slate-500">Ha</span>
             </div>
             <div className="text-[11px] text-slate-500 truncate">
-              Across active req...
+              Across active req.
             </div>
           </div>
 
           {/* Card 4: Land Acquired */}
-          <div className="bg-white border border-slate-200/90 rounded-lg p-3 shadow-xs flex flex-col justify-between">
-            <div className="flex items-center justify-between">
-              <span className="text-[10px] font-bold tracking-wider text-slate-500 uppercase">
+          <div className="bg-white border border-slate-200/90 rounded-xl p-3 sm:p-3.5 shadow-xs flex flex-col justify-between hover:shadow-sm transition-shadow">
+            <div className="flex items-center justify-between gap-1">
+              <span className="text-[10px] font-bold tracking-wider text-slate-500 uppercase truncate">
                 Land Acquired
               </span>
-              <span className="text-[10px] font-bold text-slate-700 bg-slate-100 border border-slate-200 px-1.5 py-0.2 rounded">
+              <span className="text-[9px] font-bold text-slate-700 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded shrink-0">
                 60.7%
               </span>
             </div>
-            <div className="text-3xl font-bold text-slate-900 my-1 font-sans">
+            <div className="text-xl sm:text-2xl font-bold text-slate-900 my-1 font-sans tracking-tight truncate">
               2,930.15 <span className="text-xs font-normal text-slate-500">Ha</span>
             </div>
             <div className="text-[11px] text-slate-500 truncate">
-              60.7% of propose...
+              Target: 4,825.40 Ha
             </div>
           </div>
 
           {/* Card 5: Compensation */}
-          <div className="bg-white border border-slate-200/90 rounded-lg p-3 shadow-xs flex flex-col justify-between">
-            <div className="flex items-center justify-between">
-              <span className="text-[10px] font-bold tracking-wider text-slate-500 uppercase">
-                Compensation ₹
+          <div className="bg-white border border-slate-200/90 rounded-xl p-3 sm:p-3.5 shadow-xs flex flex-col justify-between hover:shadow-sm transition-shadow">
+            <div className="flex items-center justify-between gap-1">
+              <span className="text-[10px] font-bold tracking-wider text-slate-500 uppercase truncate">
+                Compensation
               </span>
+              <span className="text-[9px] font-mono text-emerald-700 font-bold bg-emerald-50 px-1 rounded">INR</span>
             </div>
-            <div className="text-3xl font-bold text-slate-900 my-1 font-sans">
+            <div className="text-xl sm:text-2xl font-bold text-slate-900 my-1 font-sans tracking-tight truncate" title="₹1,284.62 Cr">
               ₹1,284.62 <span className="text-xs font-normal text-slate-500">Cr</span>
             </div>
             <div className="text-[11px] text-slate-500 truncate">
-              Assessed / paid tr...
+              Assessed &amp; in escrow
             </div>
           </div>
 
           {/* Card 6: Affected Families */}
-          <div className="bg-white border border-slate-200/90 rounded-lg p-3 shadow-xs flex flex-col justify-between">
-            <div className="flex items-center justify-between">
-              <span className="text-[10px] font-bold tracking-wider text-slate-500 uppercase">
+          <div className="bg-white border border-slate-200/90 rounded-xl p-3 sm:p-3.5 shadow-xs flex flex-col justify-between hover:shadow-sm transition-shadow">
+            <div className="flex items-center justify-between gap-1">
+              <span className="text-[10px] font-bold tracking-wider text-slate-500 uppercase truncate">
                 Affected Families
               </span>
-              <Home className="w-3.5 h-3.5 text-slate-400" />
+              <Home className="w-3.5 h-3.5 text-slate-400 shrink-0" />
             </div>
-            <div className="text-3xl font-bold text-slate-900 my-1 font-sans">
+            <div className="text-xl sm:text-2xl font-bold text-slate-900 my-1 font-sans tracking-tight truncate">
               8,412
             </div>
             <div className="text-[11px] text-slate-500 truncate">

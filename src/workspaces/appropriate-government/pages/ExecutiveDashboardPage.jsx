@@ -159,97 +159,97 @@ export default function ExecutiveDashboardPage() {
       </div>
 
       {/* 2. Grouped Summary Panels (Compact Government Enterprise Metric Blocks) */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2.5 text-xs">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs min-w-0">
         
         {/* Panel 1: Projects Portfolio Summary */}
-        <div className="bg-white border border-slate-200 rounded p-2.5 shadow-2xs space-y-1.5">
+        <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-2xs space-y-1.5 min-w-0 overflow-hidden">
           <div className="flex items-center justify-between text-slate-500 font-semibold border-b pb-1">
-            <span className="uppercase text-[10px] tracking-wide font-mono font-bold">PROJECT PORTFOLIO</span>
-            <Building className="w-3.5 h-3.5 text-[#C5A059]" />
+            <span className="uppercase text-[10px] tracking-wide font-mono font-bold truncate">PROJECT PORTFOLIO</span>
+            <Building className="w-3.5 h-3.5 text-[#C5A059] shrink-0" />
           </div>
-          <div className="flex items-baseline justify-between">
-            <span className="text-lg font-bold font-mono text-[#1B365D]">{totalProjects} Projects</span>
-            <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded border border-emerald-200 font-mono">{activeProjects} Active</span>
+          <div className="flex items-baseline justify-between gap-1">
+            <span className="text-lg font-bold font-mono text-[#1B365D] truncate">{totalProjects} Projects</span>
+            <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded border border-emerald-200 font-mono shrink-0">{activeProjects} Active</span>
           </div>
           <div className="text-[10px] text-slate-500 space-y-0.5 pt-1 border-t border-slate-100">
-            <div className="flex justify-between">
-              <span>SIA / Objections:</span>
-              <span className="font-mono font-semibold text-slate-800">{underSia} / {underObjection}</span>
+            <div className="flex justify-between gap-1">
+              <span className="truncate">SIA / Objections:</span>
+              <span className="font-mono font-semibold text-slate-800 shrink-0">{underSia} / {underObjection}</span>
             </div>
-            <div className="flex justify-between">
-              <span>Sec 11 / Sec 19 Pub:</span>
-              <span className="font-mono font-semibold text-blue-800">{atSec11} / {sec19Published}</span>
+            <div className="flex justify-between gap-1">
+              <span className="truncate">Sec 11 / Sec 19 Pub:</span>
+              <span className="font-mono font-semibold text-blue-800 shrink-0">{atSec11} / {sec19Published}</span>
             </div>
           </div>
         </div>
 
         {/* Panel 2: Land Quantum Summary */}
-        <div className="bg-white border border-slate-200 rounded p-2.5 shadow-2xs space-y-1.5">
+        <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-2xs space-y-1.5 min-w-0 overflow-hidden">
           <div className="flex items-center justify-between text-slate-500 font-semibold border-b pb-1">
-            <span className="uppercase text-[10px] tracking-wide font-mono font-bold">LAND QUANTUM</span>
-            <MapPin className="w-3.5 h-3.5 text-[#C5A059]" />
+            <span className="uppercase text-[10px] tracking-wide font-mono font-bold truncate">LAND QUANTUM</span>
+            <MapPin className="w-3.5 h-3.5 text-[#C5A059] shrink-0" />
           </div>
-          <div className="flex items-baseline justify-between">
-            <span className="text-lg font-bold font-mono text-slate-900">{totalProposedHa.toFixed(1)} Ha</span>
-            <span className="text-[10px] font-mono text-blue-700 font-semibold">Total Proposed</span>
+          <div className="flex items-baseline justify-between gap-1">
+            <span className="text-lg font-bold font-mono text-slate-900 truncate">{totalProposedHa.toFixed(1)} Ha</span>
+            <span className="text-[10px] font-mono text-blue-700 font-semibold shrink-0">Total Proposed</span>
           </div>
           <div className="text-[10px] text-slate-500 space-y-0.5 pt-1 border-t border-slate-100">
-            <div className="flex justify-between">
-              <span>Notified / Declared:</span>
-              <span className="font-mono font-semibold text-slate-800">{totalNotifiedHa.toFixed(1)} / {totalDeclaredHa.toFixed(1)} Ha</span>
+            <div className="flex justify-between gap-1">
+              <span className="truncate">Notified / Declared:</span>
+              <span className="font-mono font-semibold text-slate-800 shrink-0">{totalNotifiedHa.toFixed(1)} / {totalDeclaredHa.toFixed(1)} Ha</span>
             </div>
-            <div className="flex justify-between">
-              <span>Vested / Acquired:</span>
-              <span className="font-mono font-bold text-emerald-700">{totalAcquiredHa.toFixed(1)} Ha</span>
+            <div className="flex justify-between gap-1">
+              <span className="truncate">Vested / Acquired:</span>
+              <span className="font-mono font-bold text-emerald-700 shrink-0">{totalAcquiredHa.toFixed(1)} Ha</span>
             </div>
           </div>
         </div>
 
         {/* Panel 3: Statutory Timers & Lapsing Radar */}
-        <div className="bg-white border border-slate-200 rounded p-2.5 shadow-2xs space-y-1.5">
+        <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-2xs space-y-1.5 min-w-0 overflow-hidden">
           <div className="flex items-center justify-between text-slate-500 font-semibold border-b pb-1">
-            <span className="uppercase text-[10px] tracking-wide font-mono font-bold">SECTION 19 12-MO RADAR</span>
-            <Clock className="w-3.5 h-3.5 text-[#C5A059]" />
+            <span className="uppercase text-[10px] tracking-wide font-mono font-bold truncate">SECTION 19 12-MO RADAR</span>
+            <Clock className="w-3.5 h-3.5 text-[#C5A059] shrink-0" />
           </div>
-          <div className="flex items-baseline justify-between">
-            <span className="text-lg font-bold font-mono text-amber-700">66d Left</span>
-            <span className="text-[9px] font-bold bg-amber-100 text-amber-900 px-1.5 py-0.2 rounded font-mono">
+          <div className="flex items-baseline justify-between gap-1">
+            <span className="text-lg font-bold font-mono text-amber-700 truncate">66d Left</span>
+            <span className="text-[9px] font-bold bg-amber-100 text-amber-900 px-1.5 py-0.2 rounded font-mono shrink-0">
               NHAI Alert
             </span>
           </div>
           <div className="text-[10px] text-slate-500 space-y-0.5 pt-1 border-t border-slate-100">
-            <div className="flex justify-between">
-              <span>Stay Excluded Days:</span>
-              <span className="font-mono font-semibold text-purple-700">+45 Days (HC)</span>
+            <div className="flex justify-between gap-1">
+              <span className="truncate">Stay Excluded Days:</span>
+              <span className="font-mono font-semibold text-purple-700 shrink-0">+45 Days (HC)</span>
             </div>
-            <div className="flex justify-between">
-              <span>Lapse Risk Cases:</span>
-              <span className="font-mono font-semibold text-rose-700">1 Critical Case</span>
+            <div className="flex justify-between gap-1">
+              <span className="truncate">Lapse Risk Cases:</span>
+              <span className="font-mono font-semibold text-rose-700 shrink-0">1 Critical Case</span>
             </div>
           </div>
         </div>
 
         {/* Panel 4: Financial Escrow & PFMS */}
-        <div className="bg-white border border-slate-200 rounded p-2.5 shadow-2xs space-y-1.5">
+        <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-2xs space-y-1.5 min-w-0 overflow-hidden">
           <div className="flex items-center justify-between text-slate-500 font-semibold border-b pb-1">
-            <div className="flex items-center gap-1">
-              <span className="uppercase text-[10px] tracking-wide font-mono font-bold">FINANCIAL ESCROW &amp; DBT</span>
-              <span className="text-[8px] font-mono px-1 rounded bg-amber-100 text-amber-900 font-bold">MOCK</span>
+            <div className="flex items-center gap-1 min-w-0">
+              <span className="uppercase text-[10px] tracking-wide font-mono font-bold truncate">FINANCIAL ESCROW &amp; DBT</span>
+              <span className="text-[8px] font-mono px-1 rounded bg-amber-100 text-amber-900 font-bold shrink-0">MOCK</span>
             </div>
-            <Coins className="w-3.5 h-3.5 text-[#C5A059]" />
+            <Coins className="w-3.5 h-3.5 text-[#C5A059] shrink-0" />
           </div>
-          <div className="flex items-baseline justify-between">
-            <span className="text-lg font-bold font-mono text-[#1B365D]">₹{totalEscrowCr.toFixed(0)} Cr</span>
-            <span className="text-[10px] font-mono text-emerald-700 font-semibold">Escrow Funded</span>
+          <div className="flex items-baseline justify-between gap-1">
+            <span className="text-lg font-bold font-mono text-[#1B365D] truncate">₹{totalEscrowCr.toFixed(0)} Cr</span>
+            <span className="text-[10px] font-mono text-emerald-700 font-semibold shrink-0">Escrow Funded</span>
           </div>
           <div className="text-[10px] text-slate-500 space-y-0.5 pt-1 border-t border-slate-100">
-            <div className="flex justify-between">
-              <span>Disbursed via PFMS:</span>
-              <span className="font-mono font-semibold text-slate-800">₹{totalDisbursedCr.toFixed(0)} Cr</span>
+            <div className="flex justify-between gap-1">
+              <span className="truncate">Disbursed via PFMS:</span>
+              <span className="font-mono font-semibold text-slate-800 shrink-0">₹{totalDisbursedCr.toFixed(0)} Cr</span>
             </div>
-            <div className="flex justify-between">
-              <span>PFMS / CNA Status:</span>
-              <span className="font-mono font-bold text-emerald-700">Active (Mock Sync)</span>
+            <div className="flex justify-between gap-1">
+              <span className="truncate">Treasury Balance:</span>
+              <span className="font-mono font-semibold text-emerald-700 shrink-0">₹{(totalEscrowCr - totalDisbursedCr).toFixed(0)} Cr</span>
             </div>
           </div>
         </div>

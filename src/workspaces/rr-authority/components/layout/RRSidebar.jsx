@@ -65,13 +65,13 @@ export default function RRSidebar() {
 
       {/* Sidebar Container */}
       <aside 
-        className={`fixed lg:static inset-y-0 left-0 z-50 flex flex-col bg-[#0F2342] text-slate-200 border-r border-slate-700/80 transition-all duration-200 ease-in-out select-none shadow-md lg:shadow-none ${
+        className={`fixed lg:static inset-y-0 left-0 z-50 flex flex-col bg-[#1B365D] text-slate-100 border-r border-blue-900/40 transition-all duration-200 ease-in-out select-none shadow-md lg:shadow-none ${
           isMobileSidebarOpen ? 'translate-x-0 w-72' : '-translate-x-full lg:translate-x-0'
-        } ${isSidebarCollapsed ? 'lg:w-16' : 'lg:w-64 xl:w-72'}`}
+        } ${isSidebarCollapsed ? 'lg:w-16' : 'lg:w-72 xl:w-80'}`}
       >
         
         {/* Mobile/Tablet Drawer Header */}
-        <div className="lg:hidden h-14 px-4 flex items-center justify-between border-b border-slate-700 bg-[#1B365D]">
+        <div className="lg:hidden h-14 px-4 flex items-center justify-between border-b border-blue-900/50 bg-[#142947]">
           <div className="flex items-center gap-2">
             <Shield className="w-4 h-4 text-[#C5A059]" />
             <span className="font-bold text-xs uppercase tracking-wider text-white">
@@ -80,7 +80,7 @@ export default function RRSidebar() {
           </div>
           <button 
             onClick={() => setIsMobileSidebarOpen(false)}
-            className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-700/80 cursor-pointer"
+            className="p-1.5 rounded-lg text-blue-200 hover:text-white hover:bg-white/10 cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -88,10 +88,10 @@ export default function RRSidebar() {
 
         {/* Role Slicing Header Badge */}
         {!isSidebarCollapsed && (
-          <div className="hidden md:flex px-4 py-2.5 border-b border-slate-700/70 items-center justify-between bg-slate-900/40">
+          <div className="hidden md:flex px-4 py-2.5 border-b border-blue-900/50 items-center justify-between bg-[#142947]">
             <div className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-300 font-semibold">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-blue-100 font-semibold">
                 {currentRole === 'DUAL_CHARGE' 
                   ? 'DUAL-CHARGE UNIFIED VIEW (1-10)' 
                   : currentRole === 'ADMINISTRATOR' 
@@ -106,7 +106,7 @@ export default function RRSidebar() {
         )}
 
         {/* Scrollable Navigation List */}
-        <div className="flex-1 overflow-y-auto p-2 space-y-4 text-xs">
+        <div className="flex-1 overflow-y-auto p-2.5 space-y-4 text-xs scrollbar-thin scrollbar-thumb-blue-300/30">
           
           {/* Group 1: Administrator Menus (1 to 7) */}
           {adminMenus.length > 0 && (
@@ -114,7 +114,7 @@ export default function RRSidebar() {
               {!isSidebarCollapsed && (
                 <div className="px-3 py-1 text-[10px] font-mono font-bold uppercase text-[#C5A059] tracking-wider flex items-center justify-between">
                   <span>Part I: Administrator Operations</span>
-                  <span className="text-slate-400">Sec 43</span>
+                  <span className="text-blue-200">Sec 43</span>
                 </div>
               )}
 
@@ -127,27 +127,27 @@ export default function RRSidebar() {
                     key={item.id}
                     onClick={() => handleMenuClick(item.id)}
                     title={isSidebarCollapsed ? `${item.number} ${item.title}` : undefined}
-                    className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-left transition-all cursor-pointer group ${
+                    className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-left transition-all cursor-pointer group ${
                       isActive 
-                        ? 'bg-[#1B365D] text-white font-bold border-l-4 border-[#C5A059] shadow-inner' 
-                        : 'text-slate-300 hover:bg-slate-800/80 hover:text-white'
+                        ? 'bg-[#183A62] text-white font-bold border-l-4 border-[#C5A059] shadow-inner' 
+                        : 'text-blue-100 hover:bg-[#2E649E] hover:text-white'
                     }`}
                   >
                     <IconComponent className={`w-4 h-4 shrink-0 transition-transform ${
-                      isActive ? 'text-[#C5A059] scale-110' : 'text-slate-400 group-hover:text-slate-200'
+                      isActive ? 'text-[#C5A059] scale-110' : 'text-blue-200 group-hover:text-white'
                     }`} />
 
                     {!isSidebarCollapsed && (
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-1.5 leading-snug">
-                          <span className={`font-mono text-[10px] font-bold ${isActive ? 'text-[#C5A059]' : 'text-slate-400'}`}>
+                          <span className={`font-mono text-[10px] font-bold ${isActive ? 'text-[#C5A059]' : 'text-blue-200'}`}>
                             {item.number}
                           </span>
                           <span className="truncate text-[11px] font-sans">
                             {item.title}
                           </span>
                         </div>
-                        <div className="text-[9px] font-mono text-slate-400 truncate mt-0.5">
+                        <div className="text-[9px] font-mono text-blue-200/80 truncate mt-0.5">
                           {item.statutoryRef}
                         </div>
                       </div>
@@ -162,9 +162,9 @@ export default function RRSidebar() {
           {commissionerMenus.length > 0 && (
             <div className="space-y-1">
               {!isSidebarCollapsed && (
-                <div className="px-3 py-1 text-[10px] font-mono font-bold uppercase text-[#C5A059] tracking-wider flex items-center justify-between border-t border-slate-700/60 pt-3">
+                <div className="px-3 py-1 text-[10px] font-mono font-bold uppercase text-[#C5A059] tracking-wider flex items-center justify-between border-t border-blue-300/25 pt-3">
                   <span>Part II: Commissioner Oversight</span>
-                  <span className="text-slate-400">Sec 44</span>
+                  <span className="text-blue-200">Sec 44</span>
                 </div>
               )}
 
@@ -177,27 +177,27 @@ export default function RRSidebar() {
                     key={item.id}
                     onClick={() => handleMenuClick(item.id)}
                     title={isSidebarCollapsed ? `${item.number} ${item.title}` : undefined}
-                    className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-left transition-all cursor-pointer group ${
+                    className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-left transition-all cursor-pointer group ${
                       isActive 
-                        ? 'bg-[#1B365D] text-white font-bold border-l-4 border-[#C5A059] shadow-inner' 
-                        : 'text-slate-300 hover:bg-slate-800/80 hover:text-white'
+                        ? 'bg-[#12243F] text-white font-bold border-l-4 border-[#C5A059] shadow-inner' 
+                        : 'text-blue-100 hover:bg-[#234575] hover:text-white'
                     }`}
                   >
                     <IconComponent className={`w-4 h-4 shrink-0 transition-transform ${
-                      isActive ? 'text-[#C5A059] scale-110' : 'text-slate-400 group-hover:text-slate-200'
+                      isActive ? 'text-[#C5A059] scale-110' : 'text-blue-200 group-hover:text-white'
                     }`} />
 
                     {!isSidebarCollapsed && (
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-1.5 leading-snug">
-                          <span className={`font-mono text-[10px] font-bold ${isActive ? 'text-[#C5A059]' : 'text-slate-400'}`}>
+                          <span className={`font-mono text-[10px] font-bold ${isActive ? 'text-[#C5A059]' : 'text-blue-200'}`}>
                             {item.number}
                           </span>
                           <span className="truncate text-[11px] font-sans">
                             {item.title}
                           </span>
                         </div>
-                        <div className="text-[9px] font-mono text-slate-400 truncate mt-0.5">
+                        <div className="text-[9px] font-mono text-blue-200/80 truncate mt-0.5">
                           {item.statutoryRef}
                         </div>
                       </div>
@@ -208,22 +208,6 @@ export default function RRSidebar() {
             </div>
           )}
 
-        </div>
-
-        {/* Footer: Collapse / Expand Toggle */}
-        <div className="hidden md:flex h-11 px-3 border-t border-slate-700/80 items-center justify-between bg-slate-900/60 text-slate-400 text-xs">
-          {!isSidebarCollapsed && (
-            <span className="text-[10px] font-mono text-slate-400">
-              RFCTLARR 2013 • NIC / DoLR
-            </span>
-          )}
-          <button
-            onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-            className="p-1 rounded-md hover:bg-slate-800 text-slate-400 hover:text-white transition-colors cursor-pointer ml-auto"
-            title={isSidebarCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
-          >
-            {isSidebarCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
-          </button>
         </div>
 
       </aside>

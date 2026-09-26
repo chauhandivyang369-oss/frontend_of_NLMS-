@@ -33,20 +33,20 @@ export default function Sidebar({ isCollapsed, setIsCollapsed }) {
 
   return (
     <aside 
-      className={`bg-[#0b1325] border-r border-slate-800 flex flex-col transition-all duration-200 shrink-0 select-none ${
-        isCollapsed ? 'w-16' : 'w-64'
+      className={`bg-[#1B365D] border-r border-blue-900/40 flex flex-col transition-all duration-200 shrink-0 select-none shadow-lg ${
+        isCollapsed ? 'w-16' : 'w-68 xl:w-72'
       }`}
     >
       {/* Header: NAVIGATION MODULES + Hamburger Icon */}
-      <div className="px-4 py-3 border-b border-slate-800/80 flex items-center justify-between">
+      <div className="px-4 py-3.5 border-b border-blue-400/20 bg-[#142947] flex items-center justify-between">
         {!isCollapsed && (
-          <div className="text-[11px] font-bold text-slate-300 tracking-wider uppercase font-sans">
+          <div className="text-[11px] font-bold text-amber-300 tracking-wider uppercase font-sans">
             Navigation Modules
           </div>
         )}
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="p-1 rounded hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition-colors mx-auto"
+          className="p-1.5 rounded-lg hover:bg-white/10 text-blue-100 hover:text-white transition-colors mx-auto cursor-pointer"
           title={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
           <Menu className="w-4 h-4" />
@@ -54,7 +54,7 @@ export default function Sidebar({ isCollapsed, setIsCollapsed }) {
       </div>
 
       {/* 10 Navigation Items */}
-      <nav className="flex-1 overflow-y-auto py-2 px-2.5 space-y-1 scrollbar-thin scrollbar-thumb-slate-800">
+      <nav className="flex-1 overflow-y-auto py-3 px-3 space-y-1.5 scrollbar-thin scrollbar-thumb-blue-300/30">
         {MENU_ITEMS.map((item) => {
           const Icon = item.icon;
           const isActive = activeModule === item.id;
@@ -63,27 +63,27 @@ export default function Sidebar({ isCollapsed, setIsCollapsed }) {
             <button
               key={item.id}
               onClick={() => setActiveModule(item.id)}
-              className={`w-full flex items-center gap-2.5 px-2.5 py-2 rounded-md text-left transition-all ${
+              className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-all cursor-pointer ${
                 isActive
-                  ? 'bg-[#172554] border border-slate-700/90 text-white font-medium shadow-xs'
-                  : 'text-slate-300 hover:bg-slate-800/60 hover:text-white'
+                  ? 'bg-[#142947] border border-amber-400/60 text-white font-bold shadow-xs'
+                  : 'text-blue-100 hover:bg-[#244777] hover:text-white'
               }`}
               title={isCollapsed ? `${item.number}. ${item.title}` : undefined}
             >
-              <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-amber-400' : 'text-slate-400'}`} />
+              <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-amber-300' : 'text-blue-200'}`} />
 
               {!isCollapsed && (
                 <div className="flex-1 flex items-center justify-between min-w-0">
                   <span className="text-xs truncate font-medium">
-                    <span className="text-slate-400 mr-1.5">{item.number}.</span>
+                    <span className="text-blue-200 mr-1.5 font-mono">{item.number}.</span>
                     {item.title}
                   </span>
 
                   {item.badge && (
-                    <span className={`text-[10px] px-1.5 py-0.2 rounded font-mono font-medium ml-1.5 shrink-0 ${
+                    <span className={`text-[10px] px-2 py-0.5 rounded font-mono font-bold ml-1.5 shrink-0 ${
                       item.badgeType === 'warning' 
-                        ? 'bg-amber-950 text-amber-300 border border-amber-800/80' 
-                        : 'bg-slate-800 text-slate-300 border border-slate-750'
+                        ? 'bg-amber-950 text-amber-300 border border-amber-500/40' 
+                        : 'bg-[#142947] text-blue-100 border border-blue-400/30'
                     }`}>
                       {item.badge}
                     </span>
@@ -102,19 +102,19 @@ export default function Sidebar({ isCollapsed, setIsCollapsed }) {
 
       {/* Bottom Authentication & Last Sync Box */}
       {!isCollapsed && (
-        <div className="p-3 border-t border-slate-800/80 text-[11px] bg-[#090f1e]">
+        <div className="p-3.5 border-t border-blue-400/20 text-[11px] bg-[#142947]">
           <div className="flex items-center gap-2 mb-2">
-            <div className="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-500/50 flex items-center justify-center text-emerald-400 shrink-0">
+            <div className="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400/50 flex items-center justify-center text-emerald-400 shrink-0">
               <CheckCircle2 className="w-3.5 h-3.5" />
             </div>
             <div className="min-w-0">
-              <div className="text-xs font-bold text-white leading-tight">RB MANAGER</div>
-              <div className="text-[10px] text-slate-400 truncate">Authenticated Government User</div>
+              <div className="text-slate-200 font-bold font-mono text-[10px] truncate">
+                DILRMP • NIC AUTHENTICATED
+              </div>
+              <div className="text-blue-200/80 text-[9px] truncate">
+                Govt. Enterprise Cloud Gateway
+              </div>
             </div>
-          </div>
-          <div className="flex items-center gap-1.5 text-[10px] text-slate-400 pt-1.5 border-t border-slate-800/60 font-sans">
-            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></div>
-            <span>Last sync: 14 Sep 2026, 14:32 IST</span>
           </div>
         </div>
       )}

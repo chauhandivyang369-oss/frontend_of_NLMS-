@@ -683,120 +683,154 @@ export default function PublicHeader({
   };
 
   return (
-    <header ref={navRef} className="w-full text-white bg-[#0b1728] shadow-xl sticky top-0 z-50">
+    <header ref={navRef} className="w-full text-white bg-[#1B365D] shadow-2xl sticky top-0 z-50">
       
-      {/* 1. TOP GOVERNMENT IDENTITY & OFFICIAL TITLE BAR */}
-      <div className="border-b border-slate-800 bg-[#081220]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between">
+      {/* TIER 1: GOVERNMENT BRAND IDENTITY & PRIMARY ACTIONS ROW */}
+      <div className="border-b border-blue-900/40 bg-[#1B365D]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4 md:gap-6">
           
-          {/* Left: Ashoka Emblem + Official 3-Row National Title */}
-          <div className="flex items-center gap-3">
-            {/* White Circular National Emblem Badge */}
-            <div className="w-11 h-11 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center p-1.5 shadow-md shrink-0 border border-slate-200 select-none">
-              <svg viewBox="0 0 100 120" className="w-8 h-8 text-[#1B365D]" fill="currentColor">
-                <circle cx="50" cy="28" r="14" fill="#C5A059" />
-                <path d="M42 20 C42 16, 58 16, 58 20 C64 22, 64 32, 58 35 C58 40, 42 40, 42 35 C36 32, 36 22, 42 20 Z" fill="#996E25" />
-                <circle cx="34" cy="30" r="10" fill="#B38A3A" />
-                <circle cx="66" cy="30" r="10" fill="#B38A3A" />
-                <rect x="25" y="46" width="50" height="12" rx="2" fill="#C5A059" />
-                <circle cx="50" cy="52" r="5" fill="#1B365D" />
-                <circle cx="50" cy="52" r="4" fill="none" stroke="#FFFFFF" strokeWidth="0.8" />
-                <path d="M20 62 L80 62 L74 74 L26 74 Z" fill="#996E25" />
-                <rect x="18" y="78" width="64" height="14" rx="2" fill="#142642" stroke="#C5A059" strokeWidth="1" />
-                <text x="50" y="88" fontSize="7.5" fill="#FAF5E6" fontWeight="bold" textAnchor="middle" fontFamily="serif">सत्यमेव जयते</text>
+          {/* Left: Enhanced National Ashoka Emblem + Dignified Bilingual National Portal Identity */}
+          <div 
+            onClick={() => {
+              setActiveTab('overview');
+              setActiveMainMenu(null);
+              setActiveSubMenu(null);
+              setActiveThirdMenu(null);
+            }}
+            className="flex items-center gap-3.5 cursor-pointer hover:opacity-95 transition-opacity select-none shrink-0"
+            title="NLAMS Portal Home"
+          >
+            {/* Prestigious National Emblem Medallion with Gold Filigree */}
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center p-1 shadow-md shrink-0 border-2 border-[#C5A059] select-none ring-2 ring-amber-400/30">
+              <svg viewBox="0 0 100 120" className="w-9 h-9 sm:w-10 sm:h-10 text-[#1B365D]" fill="currentColor">
+                {/* Capital Lion Crown */}
+                <circle cx="50" cy="26" r="13" fill="#C5A059" />
+                <path d="M42 18 C42 14, 58 14, 58 18 C64 20, 64 30, 58 33 C58 38, 42 38, 42 33 C36 30, 36 20, 42 18 Z" fill="#996E25" />
+                <circle cx="33" cy="28" r="9.5" fill="#B38A3A" />
+                <circle cx="67" cy="28" r="9.5" fill="#B38A3A" />
+                {/* Abacus with Ashoka Chakra */}
+                <rect x="23" y="44" width="54" height="13" rx="2" fill="#C5A059" />
+                <circle cx="50" cy="50.5" r="5.5" fill="#1B365D" />
+                <circle cx="50" cy="50.5" r="4.5" fill="none" stroke="#FFFFFF" strokeWidth="0.9" />
+                <line x1="50" y1="46" x2="50" y2="55" stroke="#FFFFFF" strokeWidth="0.6" />
+                <line x1="45.5" y1="50.5" x2="54.5" y2="50.5" stroke="#FFFFFF" strokeWidth="0.6" />
+                <line x1="46.8" y1="47.3" x2="53.2" y2="53.7" stroke="#FFFFFF" strokeWidth="0.6" />
+                <line x1="46.8" y1="53.7" x2="53.2" y2="47.3" stroke="#FFFFFF" strokeWidth="0.6" />
+                {/* Inverted Lotus Bell */}
+                <path d="M19 60 L81 60 L75 73 L25 73 Z" fill="#996E25" />
+                {/* Plinth with Satyameva Jayate */}
+                <rect x="16" y="77" width="68" height="15" rx="2" fill="#142947" stroke="#C5A059" strokeWidth="1.2" />
+                <text x="50" y="87.5" fontSize="8" fill="#FAF5E6" fontWeight="bold" textAnchor="middle" fontFamily="serif">सत्यमेव जयते</text>
               </svg>
             </div>
 
-            {/* 3-Row Official Government Brand Text */}
-            <div className="flex flex-col justify-center select-none">
-              <div className="text-[#C5A059] font-bold text-[9px] sm:text-[10px] tracking-wider uppercase leading-tight">
-                GOVERNMENT OF INDIA • MINISTRY OF RURAL DEVELOPMENT
+            {/* Indian Flag Vertical Accent */}
+            <div className="w-1.5 h-12 rounded-full overflow-hidden flex flex-col shadow-xs hidden xs:flex shrink-0">
+              <div className="h-1/3 bg-[#FF9933]" />
+              <div className="h-1/3 bg-white" />
+              <div className="h-1/3 bg-[#138808]" />
+            </div>
+
+            {/* Comprehensive Bilingual Brand Typography */}
+            <div className="flex flex-col justify-center">
+              <div className="flex items-center gap-2">
+                <span className="text-[#C5A059] font-black text-xs sm:text-sm tracking-wider uppercase leading-none font-sans">
+                  भारत सरकार
+                </span>
+                <span className="text-blue-200 text-[11px]">•</span>
+                <span className="text-blue-100 font-semibold text-[11px] sm:text-xs tracking-wide uppercase leading-none font-sans">
+                  Government of India
+                </span>
+                <span className="hidden md:inline-block text-[10px] text-amber-200 bg-amber-400/20 border border-amber-300/40 px-2 py-0.5 rounded font-mono font-medium">
+                  DoLR • MoRD
+                </span>
               </div>
-              <div className="text-white font-black text-xs sm:text-sm md:text-base tracking-wide uppercase font-sans leading-snug">
-                NATIONAL LAND ACQUISITION MANAGEMENT SYSTEM
+              
+              <div className="text-white font-black text-base sm:text-lg md:text-xl lg:text-2xl tracking-wide uppercase font-sans leading-tight mt-1 flex items-baseline gap-2">
+                <span className="text-white">NLAMS</span>
+                <span className="text-xs sm:text-sm font-semibold text-[#E6CA85] hidden md:inline">
+                  • राष्ट्रीय भूमि अधिग्रहण एवं प्रबंधन प्रणाली
+                </span>
               </div>
-              <div className="text-slate-400 text-[10px] sm:text-[11px] font-sans leading-tight">
-                Official Government Portal (NLAMS) • RFCTLARR Act, 2013
+
+              <div className="text-blue-100/90 text-[11px] sm:text-xs font-sans leading-tight mt-0.5 hidden sm:block">
+                National Land Acquisition &amp; Management System • Statutory RFCTLARR Act, 2013
               </div>
             </div>
           </div>
 
-          {/* Right: Quick Utility Actions (Search, Login, Register, Helpline) */}
-          <div className="hidden lg:flex items-center gap-2.5">
-            
-            {/* Toll Free Badge */}
-            <div className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-900 border border-slate-700/80 text-[11px] text-amber-300">
-              <Phone className="w-3.5 h-3.5 text-amber-400" />
-              <span className="text-slate-400">Helpline:</span>
-              <span className="font-mono font-bold text-amber-200">1800-11-NLAMS</span>
+          {/* Center: Official National Statutory Badge & Helpline (Fills the Central Void) */}
+          <div className="hidden xl:flex items-center gap-4 px-4 py-2 rounded-xl bg-[#142947] border border-blue-900/60 shadow-inner shrink-0">
+            <div className="flex flex-col text-left">
+              <span className="text-[11px] uppercase font-bold text-amber-300 tracking-wider flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                Statutory Land Governance
+              </span>
+              <span className="text-[11px] text-blue-100 font-mono">
+                DGPS Cadastral &amp; PFMS DBT
+              </span>
             </div>
+            <div className="h-7 w-[1px] bg-blue-800/40" />
+            <div className="flex items-center gap-1.5 text-xs text-amber-200 font-mono font-bold">
+              <Phone className="w-3.5 h-3.5 text-amber-400" />
+              <span>1800-11-NLAMS</span>
+            </div>
+          </div>
 
+          {/* Right: Quick Action Controls - ALWAYS Prominently Visible on All Viewports */}
+          <div className="flex items-center gap-2.5 sm:gap-3.5 shrink-0">
+            
             {/* Search Trigger Button */}
             <button
               onClick={() => setSearchOverlayOpen(true)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#132238] hover:bg-[#1a2e4c] border border-slate-700 text-slate-200 text-xs font-medium cursor-pointer transition-colors shadow-xs"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#142947] hover:bg-[#203D66] border border-blue-900/60 text-slate-100 text-xs font-semibold cursor-pointer transition-colors shadow-xs"
               title="Search Projects, ULPIN, Khasra, Gazette"
             >
-              <Search className="w-3.5 h-3.5 text-amber-400" />
-              <span>Search</span>
+              <Search className="w-4 h-4 text-amber-400" />
+              <span className="hidden sm:inline">Search</span>
             </button>
 
-            {/* Citizen Portal / Registration Button */}
+            {/* Citizen Portal / Sign Up Button */}
             <button
               onClick={onLaunchCitizenWorkspace}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-white/10 hover:bg-white/15 border border-white/20 text-slate-100 text-xs font-semibold cursor-pointer transition-colors shadow-xs"
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white/15 hover:bg-white/25 border border-white/30 text-white text-xs font-bold cursor-pointer transition-colors shadow-xs"
+              title="Citizen Portal / Sign Up"
             >
-              <Users className="w-3.5 h-3.5 text-amber-300" />
-              <span>Citizen Portal / Sign Up</span>
+              <Users className="w-4 h-4 text-amber-300" />
+              <span className="hidden md:inline">Citizen Portal</span>
             </button>
 
-            {/* Officer Login Button */}
+            {/* Officer Login Button - Prominent Gold, Never Cut Off */}
             <button
               onClick={onOpenOfficerLogin}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-[#C5A059] hover:bg-[#b58f45] text-slate-950 font-bold text-xs cursor-pointer transition-all shadow-sm border border-amber-300/40"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#C5A059] hover:bg-[#b58f45] text-slate-950 font-black text-xs sm:text-sm cursor-pointer transition-all shadow-md hover:shadow-lg border border-amber-300/60 shrink-0"
+              title="Official Department & Statutory Officer Login"
             >
-              <Lock className="w-3.5 h-3.5 text-slate-950" />
+              <Lock className="w-4 h-4 text-slate-950" />
               <span>Officer Login</span>
             </button>
 
-          </div>
-
-          {/* Mobile Right Controls */}
-          <div className="flex lg:hidden items-center gap-2">
-            <button
-              onClick={() => setSearchOverlayOpen(true)}
-              className="p-2 rounded bg-[#132238] border border-slate-700 text-amber-300 cursor-pointer"
-              aria-label="Search"
-            >
-              <Search className="w-4 h-4" />
-            </button>
-            <button
-              onClick={onOpenOfficerLogin}
-              className="flex items-center gap-1 px-3 py-1.5 rounded bg-[#C5A059] text-slate-950 font-bold text-xs shadow-sm cursor-pointer"
-            >
-              <Lock className="w-3 h-3 text-slate-950" />
-              <span>Login</span>
-            </button>
+            {/* Mobile Hamburger Toggle */}
             <button
               onClick={() => {
                 setMobileMenuOpen(!mobileMenuOpen);
                 setMobileNavPath([]);
               }}
-              className="p-2 rounded bg-white/10 text-white hover:bg-white/20 transition-colors cursor-pointer"
+              className="lg:hidden p-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors cursor-pointer ml-1"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
+
           </div>
 
         </div>
       </div>
 
-      {/* 2. DESKTOP MAIN NAVIGATION BAR (Level 1 Menu with Multi-Level Cascading Dropdowns) */}
-      <nav aria-label="Main Navigation" className="hidden lg:block bg-[#0b1728] border-b border-slate-800 relative z-40">
+      {/* TIER 2: MAIN MULTI-LEVEL HORIZONTAL NAVIGATION MENU BAR (Full Width Dedicated Row) */}
+      <nav aria-label="Main Navigation" className="hidden lg:block bg-[#142947] border-b border-amber-500/30 relative z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ul className="flex items-center justify-between text-xs font-medium">
-            
+          <ul className="flex items-center justify-between text-xs font-semibold py-1.5">
             {menuData.map((mainItem) => {
               const hasDropdown = mainItem.children && mainItem.children.length > 0;
               const isCurrentOpen = activeMainMenu === mainItem.id;
@@ -804,7 +838,7 @@ export default function PublicHeader({
               return (
                 <li
                   key={mainItem.id}
-                  className="relative group py-2"
+                  className="relative group py-1"
                   onMouseEnter={() => {
                     setActiveMainMenu(mainItem.id);
                     setActiveSubMenu(null);
@@ -822,17 +856,17 @@ export default function PublicHeader({
                         setActiveThirdMenu(null);
                       }
                     }}
-                    className={`flex items-center gap-1 px-2.5 py-1.5 rounded-md transition-all cursor-pointer whitespace-nowrap ${
+                    className={`flex items-center gap-1 px-3 py-1.5 rounded-md transition-all cursor-pointer whitespace-nowrap ${
                       isCurrentOpen
-                        ? 'bg-[#152a47] text-amber-300 font-bold'
-                        : 'text-slate-200 hover:text-white hover:bg-white/5'
+                        ? 'bg-[#1E3A5F] text-amber-300 font-bold shadow-xs'
+                        : 'text-slate-100 hover:text-white hover:bg-white/10'
                     }`}
                     aria-haspopup={hasDropdown ? 'true' : 'false'}
                     aria-expanded={isCurrentOpen ? 'true' : 'false'}
                   >
                     <span>{mainItem.label}</span>
                     {hasDropdown && (
-                      <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${isCurrentOpen ? 'rotate-180 text-amber-300' : ''}`} />
+                      <ChevronDown className={`w-3.5 h-3.5 text-slate-300 transition-transform ${isCurrentOpen ? 'rotate-180 text-amber-300' : ''}`} />
                     )}
                   </button>
 
@@ -862,7 +896,7 @@ export default function PublicHeader({
                               }}
                               className={`w-full text-left px-3.5 py-2 text-xs flex items-center justify-between transition-colors cursor-pointer ${
                                 isSubActive
-                                  ? 'bg-[#1B365D] text-white font-semibold'
+                                  ? 'bg-[#1E3A5F] text-white font-semibold'
                                   : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900'
                               }`}
                               role="menuitem"
@@ -901,7 +935,7 @@ export default function PublicHeader({
                                         }}
                                         className={`w-full text-left px-3.5 py-2 text-xs flex items-center justify-between transition-colors cursor-pointer ${
                                           isThirdActive
-                                            ? 'bg-[#1B365D] text-white font-semibold'
+                                            ? 'bg-[#1E3A5F] text-white font-semibold'
                                             : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900'
                                         }`}
                                         role="menuitem"
@@ -924,7 +958,7 @@ export default function PublicHeader({
                                             <button
                                               key={fourthItem.id}
                                               onClick={() => handleItemClick(fourthItem)}
-                                              className="w-full text-left px-3.5 py-2 text-xs text-slate-700 hover:bg-[#1B365D] hover:text-white transition-colors cursor-pointer flex items-center justify-between"
+                                              className="w-full text-left px-3.5 py-2 text-xs text-slate-700 hover:bg-[#24548A] hover:text-white transition-colors cursor-pointer flex items-center justify-between"
                                               role="menuitem"
                                             >
                                               <span className="truncate">{fourthItem.label}</span>
@@ -947,18 +981,17 @@ export default function PublicHeader({
                 </li>
               );
             })}
-
           </ul>
         </div>
       </nav>
 
       {/* 3. MOBILE DRILL-DOWN DRAWER (Accordion / Stack Navigation) */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#0a1526] border-t border-slate-800 max-h-[80vh] overflow-y-auto z-50">
+        <div className="lg:hidden bg-[#1C4472] border-t border-blue-400/30 max-h-[80vh] overflow-y-auto z-50">
           <div className="p-4 space-y-3">
             
             {/* Mobile Navigation Header & Back Button */}
-            <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+            <div className="flex items-center justify-between border-b border-blue-300/30 pb-2">
               {mobileNavPath.length > 0 ? (
                 <button
                   onClick={handleMobileBack}
@@ -968,18 +1001,18 @@ export default function PublicHeader({
                   <span>Back to Previous</span>
                 </button>
               ) : (
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                <span className="text-xs font-bold text-blue-200 uppercase tracking-wider">
                   NLAMS Public Directory
                 </span>
               )}
 
-              <span className="text-xs font-mono text-slate-500">
+              <span className="text-xs font-mono text-blue-300">
                 {getCurrentMobileMenu().title}
               </span>
             </div>
 
             {/* Menu Items List */}
-            <div className="space-y-1">
+            <div className="space-y-1.5">
               {getCurrentMobileMenu().items.map((item) => {
                 const hasChildren = item.children && item.children.length > 0;
 
@@ -987,13 +1020,13 @@ export default function PublicHeader({
                   <button
                     key={item.id}
                     onClick={() => handleMobileDrillDown(item)}
-                    className="w-full text-left px-3.5 py-2.5 rounded-lg bg-[#111e33] hover:bg-[#1a2d4c] text-slate-200 text-xs font-medium flex items-center justify-between cursor-pointer transition-colors border border-slate-800/80"
+                    className="w-full text-left px-4 py-3 rounded-lg bg-[#24548A] hover:bg-[#2e68a8] text-white text-xs font-medium flex items-center justify-between cursor-pointer transition-colors border border-blue-300/25 shadow-xs"
                   >
                     <span className="truncate">{item.label}</span>
                     {hasChildren ? (
                       <ChevronRight className="w-4 h-4 text-amber-400 shrink-0" />
                     ) : (
-                      <ArrowRight className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                      <ArrowRight className="w-3.5 h-3.5 text-blue-200 shrink-0" />
                     )}
                   </button>
                 );
@@ -1001,7 +1034,7 @@ export default function PublicHeader({
             </div>
 
             {/* Mobile Quick Action Buttons */}
-            <div className="pt-3 border-t border-slate-800 space-y-2">
+            <div className="pt-3 border-t border-blue-300/30 space-y-2">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);

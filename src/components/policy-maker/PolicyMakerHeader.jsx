@@ -54,28 +54,25 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
     <header className="bg-[#1B365D] text-white border-b-2 border-[#C5A059] sticky top-0 z-40 select-none shadow-md">
       
       {/* Top Level Master Bar */}
-      <div className="h-14 px-3 sm:px-4 flex items-center justify-between gap-3">
+      <div className="min-h-[64px] px-3 sm:px-6 py-2 flex items-center justify-between gap-3 sm:gap-4">
         
         {/* Left: Emblem + Title + Role & Scope Badges */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+        <div className="flex items-center gap-2.5 sm:gap-4 shrink-0">
           
           {/* Mobile Menu Toggle Button */}
           {onToggleMobileSidebar && (
             <button
               onClick={onToggleMobileSidebar}
-              className="md:hidden p-1.5 rounded bg-slate-800 text-slate-200 hover:text-white transition-colors cursor-pointer"
+              className="md:hidden p-2 rounded-lg bg-[#142947] text-white hover:bg-[#203D66] border border-blue-900/60 transition-colors cursor-pointer shadow-xs"
               title="Open Navigation Menu"
             >
-              <Menu className="w-4 h-4" />
+              <Menu className="w-5 h-5 text-[#C5A059]" />
             </button>
           )}
 
           {/* National Emblem SVG */}
-          <div className="w-8 h-8 rounded bg-white/10 border border-[#C5A059] flex items-center justify-center text-[#C5A059] shadow-xs">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-              <circle cx="12" cy="12" r="3" />
-              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
-            </svg>
+          <div className="w-9 h-9 rounded-xl bg-white/10 border border-[#C5A059] flex items-center justify-center text-[#E6CA85] shadow-xs">
+            🏛️
           </div>
 
           <div>
@@ -86,16 +83,16 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
               <span className="text-[10px] font-bold font-mono px-1.5 py-0.2 rounded bg-[#C5A059] text-slate-950">
                 PILLAR 5
               </span>
-              <span className="hidden md:inline text-xs font-bold text-slate-200">
+              <span className="hidden md:inline text-xs font-bold text-blue-100">
                 POLICY MAKER &amp; EXECUTIVE OVERSIGHT
               </span>
             </div>
-            <div className="flex items-center gap-2 text-[10px]">
+            <div className="flex items-center gap-2 text-[10px] mt-0.5">
               {/* Dynamic Committee Role Badge */}
               <span className="px-1.5 py-0.2 rounded font-mono font-bold bg-[#C5A059]/20 text-[#E6CA85] border border-[#C5A059]/40">
                 {getRoleDisplay()}
               </span>
-              <span className="text-slate-400">•</span>
+              <span className="text-blue-300/50">•</span>
               {/* Scope Badge */}
               <span className="font-mono text-cyan-300 font-bold">
                 SCOPE: {getScopeDisplay()}
@@ -108,13 +105,13 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
         <div className="hidden md:flex items-center flex-1 max-w-sm lg:max-w-md mx-2">
           <button
             onClick={() => setIsGlobalSearchOpen(true)}
-            className="w-full bg-[#142642] hover:bg-[#0D1829] border border-slate-600 rounded px-3 py-1.5 text-xs text-slate-300 flex items-center justify-between transition-colors cursor-pointer"
+            className="w-full bg-[#142947] hover:bg-[#203D66] border border-blue-900/60 rounded-xl px-3.5 py-2 text-xs text-blue-200 flex items-center justify-between transition-colors cursor-pointer shadow-inner"
           >
             <div className="flex items-center gap-2 truncate">
               <Search className="w-3.5 h-3.5 text-[#C5A059] shrink-0" />
-              <span className="text-slate-300 truncate">Search Project ID, Name, ULPIN, State, District, Ministry...</span>
+              <span className="text-blue-100 truncate">Search Project ID, Name, ULPIN, State, District, Ministry...</span>
             </div>
-            <span className="text-[10px] font-mono text-slate-300 bg-slate-800 border border-slate-700 px-1.5 py-0.5 rounded shrink-0">
+            <span className="text-[10px] font-mono text-blue-200 bg-[#12243F] border border-blue-900/60 px-1.5 py-0.5 rounded-md shrink-0">
               Ctrl + K
             </span>
           </button>
@@ -127,25 +124,25 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
           <div className="relative">
             <button
               onClick={() => setIsWorkspaceMenuOpen(!isWorkspaceMenuOpen)}
-              className="flex items-center gap-1.5 bg-[#C5A059] hover:bg-[#d6b268] text-[#1B365D] px-2.5 py-1 rounded text-xs font-bold transition-colors cursor-pointer shadow-xs"
+              className="flex items-center gap-1.5 bg-[#C5A059] hover:bg-[#d6b268] text-slate-950 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors cursor-pointer shadow-xs"
               title="Switch Master Workspace"
             >
-              <ArrowRightLeft className="w-3.5 h-3.5" />
+              <ArrowRightLeft className="w-3.5 h-3.5 text-slate-950" />
               <span className="hidden sm:inline">Workspace:</span>
               <span>Policy Maker</span>
-              <ChevronDown className="w-3 h-3 text-[#1B365D]" />
+              <ChevronDown className="w-3 h-3 text-slate-950" />
             </button>
 
             {isWorkspaceMenuOpen && (
-              <div className="absolute right-0 mt-2 w-72 bg-[#0F1E33] border border-slate-700 rounded shadow-2xl z-50 p-2 text-xs">
-                <div className="p-2 border-b border-slate-700 text-[10px] font-mono uppercase text-[#C5A059] font-bold">
+              <div className="absolute right-0 mt-2 w-72 bg-[#142947] border border-blue-900/60 rounded-xl shadow-2xl z-50 p-2 text-xs">
+                <div className="p-2 border-b border-blue-900/50 text-[10px] font-mono uppercase text-[#C5A059] font-bold">
                   NLAMS Master Workspaces
                 </div>
                 <div className="space-y-1 py-1">
-                  <div className="p-2 bg-[#1B365D] text-white border border-[#C5A059] rounded font-semibold text-[11px] flex items-center justify-between">
+                  <div className="p-2 bg-[#12243F] text-white border border-[#C5A059] rounded-lg font-semibold text-[11px] flex items-center justify-between">
                     <div>
                       <div className="font-bold">5. Policy Maker &amp; Executive</div>
-                      <div className="text-[10px] text-slate-300">Active Session • Oversight, NMC, SMC</div>
+                      <div className="text-[10px] text-blue-200">Active Session • Oversight, NMC, SMC</div>
                     </div>
                     <span className="text-[9px] bg-[#C5A059] text-slate-950 font-bold px-1.5 py-0.5 rounded">ACTIVE</span>
                   </div>
@@ -156,10 +153,10 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
                       if (onSwitchToRequiringBody) onSwitchToRequiringBody();
                       else if (onSwitchWorkspace) onSwitchWorkspace('requiring-body');
                     }}
-                    className="w-full text-left p-2 hover:bg-slate-800 text-slate-300 hover:text-white rounded transition-colors cursor-pointer"
+                    className="w-full text-left p-2 hover:bg-[#203D66] text-slate-100 hover:text-white rounded-lg transition-colors cursor-pointer"
                   >
                     <div className="font-bold">4. Requiring Body (Form-I)</div>
-                    <div className="text-[10px] text-slate-400">Operational Wizard, GIS, Escrow</div>
+                    <div className="text-[10px] text-blue-200">Operational Wizard, GIS, Escrow</div>
                   </button>
 
                   <button
@@ -168,10 +165,10 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
                       if (onSwitchToSiaIeg) onSwitchToSiaIeg();
                       else if (onSwitchWorkspace) onSwitchWorkspace('sia-ieg');
                     }}
-                    className="w-full text-left p-2 hover:bg-slate-800 text-slate-300 hover:text-white rounded transition-colors cursor-pointer"
+                    className="w-full text-left p-2 hover:bg-[#203D66] text-slate-100 hover:text-white rounded-lg transition-colors cursor-pointer"
                   >
                     <div className="font-bold">2/3. SIA &amp; IEG Evaluation</div>
-                    <div className="text-[10px] text-slate-400">Sec 4-6 Study &amp; Sec 7-9 Appraisal</div>
+                    <div className="text-[10px] text-blue-200">Sec 4-6 Study &amp; Sec 7-9 Appraisal</div>
                   </button>
 
                   <button
@@ -179,10 +176,10 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
                       setIsWorkspaceMenuOpen(false);
                       if (onSwitchWorkspace) onSwitchWorkspace('district-collector');
                     }}
-                    className="w-full text-left p-2 hover:bg-slate-800 text-slate-300 hover:text-white rounded transition-colors cursor-pointer"
+                    className="w-full text-left p-2 hover:bg-[#203D66] text-slate-100 hover:text-white rounded-lg transition-colors cursor-pointer"
                   >
                     <div className="font-bold">8. Master District Collector</div>
-                    <div className="text-[10px] text-slate-400">CALA / LAO Inquiry &amp; Awards</div>
+                    <div className="text-[10px] text-blue-200">CALA / LAO Inquiry &amp; Awards</div>
                   </button>
 
                   <button
@@ -190,7 +187,7 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
                       setIsWorkspaceMenuOpen(false);
                       if (onSwitchWorkspace) onSwitchWorkspace('citizen');
                     }}
-                    className="w-full text-left p-2 hover:bg-slate-800 text-slate-300 hover:text-white rounded transition-colors cursor-pointer"
+                    className="w-full text-left p-2 hover:bg-[#203D66] text-slate-100 hover:text-white rounded-lg transition-colors cursor-pointer"
                   >
                     <div className="font-bold text-amber-300">9. Citizen &amp; Affected Person Portal</div>
                     <div className="text-[10px] text-slate-400">ULPIN Bhu-Aadhaar, Sec 15 Objections &amp; PFMS DBT</div>
@@ -201,35 +198,35 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
           </div>
 
           {/* e-Sign Verified Pill */}
-          <div className="hidden lg:flex items-center gap-1.5 bg-[#142642] border border-slate-600 px-2 py-1 rounded text-xs">
+          <div className="hidden lg:flex items-center gap-1.5 bg-[#142947] border border-blue-900/60 px-2.5 py-1.5 rounded-lg text-xs">
             <Key className="w-3 h-3 text-[#C5A059]" />
-            <span className="text-slate-300 text-[10px]">DSC:</span>
-            <span className="text-emerald-400 font-bold font-mono text-[10px]">VERIFIED</span>
+            <span className="text-blue-100 text-[10px]">DSC:</span>
+            <span className="text-emerald-300 font-bold font-mono text-[10px]">VERIFIED</span>
           </div>
 
           {/* Notifications */}
           <div className="relative">
             <button
               onClick={() => setIsNotificationOpen(!isNotificationOpen)}
-              className="relative p-1.5 text-slate-300 hover:text-white rounded hover:bg-slate-800 transition-colors cursor-pointer"
+              className="relative p-2 text-blue-100 hover:text-white rounded-lg bg-[#142947] hover:bg-[#203D66] border border-blue-900/60 transition-colors cursor-pointer"
               title="Statutory Alerts & Notifications"
             >
               <Bell className="w-4 h-4" />
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-rose-600 text-white font-mono font-bold text-[9px] rounded-full flex items-center justify-center border border-[#1B365D] animate-pulse">
+              <span className="absolute -top-1 -right-1 w-4 h-4 bg-rose-600 text-white font-mono font-bold text-[9px] rounded-full flex items-center justify-center border border-[#142947] animate-pulse">
                 {slaAlerts.length}
               </span>
             </button>
 
             {isNotificationOpen && (
-              <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-[#0F1E33] border border-slate-700 rounded shadow-2xl z-50 p-3 text-xs">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-2 mb-2">
+              <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-[#142947] border border-blue-900/60 rounded-xl shadow-2xl z-50 p-3 text-xs">
+                <div className="flex items-center justify-between border-b border-blue-900/50 pb-2 mb-2">
                   <div className="font-bold text-white flex items-center gap-1.5">
                     <Bell className="w-3.5 h-3.5 text-[#C5A059]" />
                     <span>Statutory &amp; Governance Alerts</span>
                   </div>
                   <button 
                     onClick={() => setIsNotificationOpen(false)}
-                    className="text-slate-400 hover:text-white"
+                    className="text-blue-200 hover:text-white"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
@@ -237,12 +234,12 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
                 <div className="space-y-2 max-h-72 overflow-y-auto">
                   {slaAlerts.map(a => (
                     <div 
-                      key={a.id}
+                      key={a.id} 
                       onClick={() => {
                         openProjectIntelligence(a.projectId);
                         setIsNotificationOpen(false);
                       }}
-                      className="p-2.5 rounded bg-slate-800/80 hover:bg-slate-750 border border-slate-700/80 cursor-pointer text-slate-200 space-y-1"
+                      className="p-2.5 rounded-lg bg-[#12243F] hover:bg-[#203D66] border border-blue-900/60 cursor-pointer text-slate-100 space-y-1"
                     >
                       <div className="flex justify-between items-center text-[10px] font-mono">
                         <span className="font-bold text-[#C5A059]">{a.projectId}</span>
@@ -251,7 +248,7 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
                         </span>
                       </div>
                       <div className="text-[11px] font-semibold text-white">{a.projectName}</div>
-                      <div className="text-[10px] text-slate-400">{a.statutoryProvision}</div>
+                      <div className="text-[10px] text-blue-200">{a.statutoryProvision}</div>
                     </div>
                   ))}
                 </div>
@@ -263,7 +260,7 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
           <div className="relative">
             <button
               onClick={() => setIsProfileOpen(!isProfileOpen)}
-              className="flex items-center gap-2 bg-[#142642] hover:bg-[#0D1829] border border-slate-600 px-2.5 py-1 rounded text-left transition-colors cursor-pointer"
+              className="flex items-center gap-2 bg-[#142947] hover:bg-[#203D66] border border-blue-900/60 px-3 py-1.5 rounded-lg text-left transition-colors cursor-pointer"
             >
               <div className="w-6 h-6 rounded-full bg-[#C5A059] text-slate-950 font-bold flex items-center justify-center text-xs">
                 <Shield className="w-3.5 h-3.5" />
@@ -271,7 +268,7 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
               <div className="hidden sm:block">
                 <div className="text-[11px] font-bold text-slate-100 flex items-center gap-1">
                   <span>{getRoleDisplay()}</span>
-                  <ChevronDown className="w-3 h-3 text-slate-400" />
+                  <ChevronDown className="w-3 h-3 text-blue-200" />
                 </div>
                 <div className="text-[9px] text-[#C5A059] font-sans truncate max-w-[120px]">
                   {currentRoleConfig.name}
@@ -281,13 +278,13 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
 
             {/* Role Switcher Menu */}
             {isProfileOpen && (
-              <div className="absolute right-0 mt-2 w-80 bg-[#0F1E33] border border-slate-700 rounded shadow-2xl z-50 p-3 text-xs">
-                <div className="border-b border-slate-800 pb-2 mb-2">
+              <div className="absolute right-0 mt-2 w-80 bg-[#142947] border border-blue-900/60 rounded-xl shadow-2xl z-50 p-3 text-xs">
+                <div className="border-b border-blue-900/50 pb-2 mb-2">
                   <div className="font-bold text-white flex items-center justify-between">
                     <span>DEMO ROLE SWITCHER</span>
                     <span className="text-[10px] font-mono text-[#C5A059]">Pillar 5 Dynamic RBAC</span>
                   </div>
-                  <div className="text-[10px] text-slate-400 mt-0.5 leading-tight">
+                  <div className="text-[10px] text-blue-200 mt-0.5 leading-tight">
                     Switch between authorized Policy Maker sub-roles to observe dynamic scope, menu gating, and project filtering.
                   </div>
                 </div>
@@ -299,17 +296,17 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
                       switchCommitteeRole('APEX');
                       setIsProfileOpen(false);
                     }}
-                    className={`w-full text-left p-2 rounded border transition-all cursor-pointer ${
+                    className={`w-full text-left p-2.5 rounded-lg border transition-all cursor-pointer ${
                       committeeRole === 'APEX'
-                        ? 'bg-[#1B365D] border-[#C5A059] text-white'
-                        : 'bg-slate-800/60 border-slate-700 text-slate-300 hover:bg-slate-800'
+                        ? 'bg-[#12243F] border-[#C5A059] text-white'
+                        : 'bg-[#142947] border-blue-900/60 text-slate-100 hover:bg-[#203D66]'
                     }`}
                   >
                     <div className="flex items-center justify-between font-bold text-white text-xs">
                       <span>Apex Executive Bodies</span>
                       {committeeRole === 'APEX' && <CheckCircle2 className="w-3.5 h-3.5 text-[#C5A059]" />}
                     </div>
-                    <div className="text-[10px] text-slate-400">
+                    <div className="text-[10px] text-blue-200">
                       NITI Aayog / PMO / Cabinet Sec / DoLR (National Scope)
                     </div>
                   </button>
@@ -319,17 +316,17 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
                       switchCommitteeRole('NMC');
                       setIsProfileOpen(false);
                     }}
-                    className={`w-full text-left p-2 rounded border transition-all cursor-pointer ${
+                    className={`w-full text-left p-2.5 rounded-lg border transition-all cursor-pointer ${
                       committeeRole === 'NMC'
-                        ? 'bg-[#1B365D] border-[#C5A059] text-white'
-                        : 'bg-slate-800/60 border-slate-700 text-slate-300 hover:bg-slate-800'
+                        ? 'bg-[#12243F] border-[#C5A059] text-white'
+                        : 'bg-[#142947] border-blue-900/60 text-slate-100 hover:bg-[#203D66]'
                     }`}
                   >
                     <div className="flex items-center justify-between font-bold text-white text-xs">
                       <span>National Monitoring Committee (NMC)</span>
                       {committeeRole === 'NMC' && <CheckCircle2 className="w-3.5 h-3.5 text-[#C5A059]" />}
                     </div>
-                    <div className="text-[10px] text-slate-400">
+                    <div className="text-[10px] text-blue-200">
                       RFCTLARR Sec 48 • Inter-State &amp; Central Corridors
                     </div>
                   </button>
@@ -339,17 +336,17 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
                       switchCommitteeRole('SMC');
                       setIsProfileOpen(false);
                     }}
-                    className={`w-full text-left p-2 rounded border transition-all cursor-pointer ${
+                    className={`w-full text-left p-2.5 rounded-lg border transition-all cursor-pointer ${
                       committeeRole === 'SMC'
-                        ? 'bg-[#1B365D] border-[#C5A059] text-white'
-                        : 'bg-slate-800/60 border-slate-700 text-slate-300 hover:bg-slate-800'
+                        ? 'bg-[#12243F] border-[#C5A059] text-white'
+                        : 'bg-[#142947] border-blue-900/60 text-slate-100 hover:bg-[#203D66]'
                     }`}
                   >
                     <div className="flex items-center justify-between font-bold text-white text-xs">
                       <span>State Monitoring Committee (SMC)</span>
                       {committeeRole === 'SMC' && <CheckCircle2 className="w-3.5 h-3.5 text-[#C5A059]" />}
                     </div>
-                    <div className="text-[10px] text-slate-400">
+                    <div className="text-[10px] text-blue-200">
                       RFCTLARR Sec 50 • Gujarat Multi-District Scope
                     </div>
                   </button>
@@ -359,17 +356,17 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
                       switchCommitteeRole('PROJECT_RR');
                       setIsProfileOpen(false);
                     }}
-                    className={`w-full text-left p-2 rounded border transition-all cursor-pointer ${
+                    className={`w-full text-left p-2.5 rounded-lg border transition-all cursor-pointer ${
                       committeeRole === 'PROJECT_RR'
-                        ? 'bg-[#1B365D] border-[#C5A059] text-white'
-                        : 'bg-slate-800/60 border-slate-700 text-slate-300 hover:bg-slate-800'
+                        ? 'bg-[#12243F] border-[#C5A059] text-white'
+                        : 'bg-[#142947] border-blue-900/60 text-slate-100 hover:bg-[#203D66]'
                     }`}
                   >
                     <div className="flex items-center justify-between font-bold text-white text-xs">
                       <span>Project R&amp;R Committee (Sec 45)</span>
                       {committeeRole === 'PROJECT_RR' && <CheckCircle2 className="w-3.5 h-3.5 text-[#C5A059]" />}
                     </div>
-                    <div className="text-[10px] text-slate-400">
+                    <div className="text-[10px] text-blue-200">
                       Trigger: Acquisitions &gt;= 100 Acres (PRJ-2026-GJ05 Scope)
                     </div>
                   </button>
@@ -384,7 +381,7 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
               if (onSwitchWorkspace) onSwitchWorkspace('landing');
             }}
             title="Logout & Return to NLAMS Public Portal"
-            className="flex items-center gap-1.5 px-2.5 py-1.5 bg-red-950/70 hover:bg-red-900 border border-red-500/50 text-red-200 hover:text-white text-xs font-semibold rounded cursor-pointer transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-red-950/70 hover:bg-red-900 border border-red-500/50 text-red-200 hover:text-white text-xs font-semibold rounded-lg cursor-pointer transition-colors"
           >
             <LogOut className="w-3.5 h-3.5 text-red-400" />
             <span className="hidden sm:inline">Logout</span>
@@ -395,7 +392,7 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
       </div>
 
       {/* SLA Ticker Bar Underneath Header (Section 11 & 12) */}
-      <div className="bg-[#0F1E33] border-t border-slate-700/80 px-3 py-1 flex items-center justify-between text-[11px] overflow-hidden">
+      <div className="bg-[#142947] border-t border-blue-900/60 px-4 py-1.5 flex items-center justify-between text-[11px] overflow-hidden">
         <div className="flex items-center gap-2 shrink-0">
           <div className="flex items-center gap-1 text-[#C5A059] font-mono font-bold text-[10px] uppercase">
             <Clock className="w-3 h-3 text-[#C5A059]" />
@@ -408,14 +405,14 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
             <div 
               key={alert.id} 
               onClick={() => openProjectIntelligence(alert.projectId)}
-              className="flex items-center gap-1.5 cursor-pointer hover:underline"
+              className="flex items-center gap-1.5 cursor-pointer hover:underline text-slate-100"
             >
               <span className={`w-1.5 h-1.5 rounded-full ${
                 alert.status === 'CRITICAL' ? 'bg-rose-500 animate-pulse' : 'bg-amber-400'
               }`}></span>
-              <span className="font-bold text-slate-200">{alert.projectId}</span>
-              <span className="text-slate-400">({alert.projectName.slice(0, 24)}...)</span>
-              <span className={`px-1 py-0.2 rounded font-bold ${
+              <span className="font-bold text-white">{alert.projectId}</span>
+              <span className="text-blue-200">({alert.projectName.slice(0, 24)}...)</span>
+              <span className={`px-1.5 py-0.2 rounded font-bold ${
                 alert.status === 'CRITICAL' ? 'bg-rose-900/80 text-rose-300' : 'bg-amber-900/80 text-amber-300'
               }`}>
                 {alert.daysRemaining} DAYS TO SECTION 19 DEADLINE
@@ -424,7 +421,7 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
           ))}
         </div>
 
-        <div className="hidden lg:flex items-center gap-2 text-[10px] text-slate-400 font-mono shrink-0 pl-2">
+        <div className="hidden lg:flex items-center gap-2 text-[10px] text-blue-200 font-mono shrink-0 pl-2">
           <span>Sec 19(7) SLA Engine Active</span>
         </div>
       </div>

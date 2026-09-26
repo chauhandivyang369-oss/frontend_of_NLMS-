@@ -97,7 +97,7 @@ export default function AppropriateGovProjectContextBar() {
       </div>
 
       {/* Center: Statutory Stage & Timers */}
-      <div className="flex items-center gap-3">
+      <div className="flex flex-wrap items-center gap-2 sm:gap-3">
         <div className="flex items-center gap-1.5 bg-white border border-slate-200 px-2.5 py-1 rounded">
           <span className="text-[10px] uppercase font-bold text-slate-400">STAGE:</span>
           <span className="font-bold text-[#1B365D]">{selectedProject.stageLabel}</span>
@@ -116,53 +116,11 @@ export default function AppropriateGovProjectContextBar() {
 
         <button
           onClick={() => openProjectDrawer(selectedProject.id)}
-          className="flex items-center gap-1 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-2.5 py-1 rounded font-semibold cursor-pointer shadow-xs"
+          className="flex items-center gap-1.5 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-2.5 py-1 rounded font-semibold cursor-pointer shadow-xs text-xs"
           title="Open complete statutory project dossier"
         >
           <Eye className="w-3.5 h-3.5 text-[#C5A059]" />
-          <span>Project Dossier</span>
-        </button>
-      </div>
-
-      {/* Right: Quick Cross-Workspace Links */}
-      <div className="flex items-center gap-1.5 border-l border-slate-300 pl-3">
-        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-          CROSS-WORKSPACE:
-        </span>
-        <button
-          onClick={() => onSwitchWorkspace && onSwitchWorkspace('requiring-body')}
-          className="px-2 py-0.5 rounded bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-[11px] font-medium flex items-center gap-1 cursor-pointer"
-          title="View Form-I &amp; Requisitioning Details"
-        >
-          <span>Req. Body</span>
-          <ExternalLink className="w-2.5 h-2.5 text-slate-400" />
-        </button>
-
-        <button
-          onClick={() => onSwitchWorkspace && onSwitchWorkspace('sia-ieg')}
-          className="px-2 py-0.5 rounded bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-[11px] font-medium flex items-center gap-1 cursor-pointer"
-          title="View Social Impact Assessment &amp; IEG Appraisal"
-        >
-          <span>SIA/IEG</span>
-          <ExternalLink className="w-2.5 h-2.5 text-slate-400" />
-        </button>
-
-        <button
-          onClick={() => onSwitchWorkspace && onSwitchWorkspace('rr-authority')}
-          className="px-2 py-0.5 rounded bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-[11px] font-medium flex items-center gap-1 cursor-pointer"
-          title="View R&amp;R Administrator Scheme &amp; Families"
-        >
-          <span>R&amp;R Auth</span>
-          <ExternalLink className="w-2.5 h-2.5 text-slate-400" />
-        </button>
-
-        <button
-          onClick={() => onSwitchWorkspace && onSwitchWorkspace('larr-authority')}
-          className="px-2 py-0.5 rounded bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-[11px] font-medium flex items-center gap-1 cursor-pointer"
-          title="View Judicial References &amp; Tribunal Records"
-        >
-          <span>LARR Auth</span>
-          <ExternalLink className="w-2.5 h-2.5 text-slate-400" />
+          <span>Dossier</span>
         </button>
       </div>
     </div>

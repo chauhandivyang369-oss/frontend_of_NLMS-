@@ -126,20 +126,20 @@ export default function CitizenSidebar() {
   };
 
   const sidebarContent = (
-    <div className="w-full h-full flex flex-col bg-[#142642] text-slate-300 border-r border-slate-700/80 select-none">
+    <div className="w-full h-full flex flex-col bg-[#1B365D] text-slate-100 border-r border-blue-900/40 select-none">
       {/* Sidebar Header */}
-      <div className="p-3 border-b border-slate-800 bg-[#0D1829] flex items-center justify-between">
+      <div className="p-3.5 border-b border-blue-900/50 bg-[#142947] flex items-center justify-between">
         <div className="text-[10px] font-bold uppercase tracking-wider text-[#C5A059] flex items-center gap-1.5">
-          <span className="w-2 h-2 bg-[#C5A059]" />
-          <span>STATUTORY MENUS (EXACTLY 10)</span>
+          <span className="w-2 h-2 rounded-full bg-[#C5A059]" />
+          <span>STATUTORY MENUS (10)</span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-[9px] font-mono bg-slate-800 px-1.5 py-0.5 text-slate-400">
+          <span className="text-[9px] font-mono bg-white/10 px-2 py-0.5 rounded text-blue-100 border border-white/20">
             CITIZEN DOCKET
           </span>
           <button
             onClick={() => setIsMobileSidebarOpen(false)}
-            className="lg:hidden p-1 rounded bg-slate-800 text-slate-400 hover:text-white"
+            className="lg:hidden p-1 rounded-md bg-white/10 text-blue-100 hover:text-white cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
@@ -148,21 +148,21 @@ export default function CitizenSidebar() {
 
       {/* Active Project Micro Context Indicator (if in Project Detail mode) */}
       {isProjectWorkspaceOpen && activeProject && (
-        <div className="p-2.5 bg-[#0F1E33] border-b border-slate-700 text-xs">
+        <div className="p-3 bg-[#142947] border-b border-blue-900/50 text-xs">
           <div className="flex items-center justify-between text-[10px] text-[#C5A059] font-bold uppercase tracking-wider">
             <span>ACTIVE PROJECT CONTEXT</span>
-            <span className="bg-slate-800 text-slate-300 px-1.5 py-0.2 rounded font-mono">
+            <span className="bg-[#12243F] text-amber-300 px-2 py-0.5 rounded font-mono border border-blue-900/60">
               {activeProject.id}
             </span>
           </div>
-          <div className="font-bold text-white text-xs truncate mt-0.5" title={activeProject.name}>
+          <div className="font-bold text-white text-xs truncate mt-1" title={activeProject.name}>
             {activeProject.name}
           </div>
         </div>
       )}
 
       {/* 10 Strictly Locked Sidebar Menus */}
-      <nav className="flex-1 overflow-y-auto py-2 space-y-0.5">
+      <nav className="flex-1 overflow-y-auto p-2 space-y-1 scrollbar-thin scrollbar-thumb-blue-300/30">
         {CITIZEN_SIDEBAR_MENUS.map((menu) => {
           const Icon = menu.icon;
           const isActive = activeMenu === menu.id;
@@ -171,16 +171,16 @@ export default function CitizenSidebar() {
             <button
               key={menu.id}
               onClick={() => handleMenuClick(menu.id)}
-              className={`w-full text-left px-3 py-2.5 flex items-start gap-2.5 transition-all cursor-pointer border-l-3 ${
+              className={`w-full text-left px-3 py-2.5 rounded-xl flex items-start gap-2.5 transition-all cursor-pointer border-l-4 ${
                 isActive
-                  ? 'bg-slate-800/90 border-[#C5A059] text-white shadow-xs'
-                  : 'border-transparent text-slate-300 hover:bg-slate-800/50 hover:text-slate-100'
+                  ? 'bg-[#12243F] border-[#C5A059] text-white shadow-xs'
+                  : 'border-transparent text-blue-100 hover:bg-[#234575] hover:text-white'
               }`}
             >
               {/* Menu Number */}
               <span
-                className={`w-5 h-5 flex items-center justify-center text-[10px] font-bold font-mono shrink-0 mt-0.5 ${
-                  isActive ? 'bg-[#C5A059] text-slate-950 font-black' : 'bg-slate-800 text-slate-400'
+                className={`w-5 h-5 flex items-center justify-center text-[10px] font-bold font-mono rounded-md shrink-0 mt-0.5 ${
+                  isActive ? 'bg-[#C5A059] text-slate-950 font-black' : 'bg-white/10 text-blue-200'
                 }`}
               >
                 {menu.num}
@@ -191,14 +191,14 @@ export default function CitizenSidebar() {
                 <div className="flex items-center justify-between">
                   <span
                     className={`text-xs font-bold truncate ${
-                      isActive ? 'text-white' : 'text-slate-200'
+                      isActive ? 'text-white' : 'text-blue-50'
                     }`}
                   >
                     {menu.title}
                   </span>
                   {menu.badge && (
                     <span
-                      className={`ml-1.5 text-[9px] font-black text-slate-950 px-1 py-0.2 shrink-0 ${
+                      className={`ml-1.5 text-[9px] font-black text-slate-950 px-1.5 py-0.5 rounded font-mono shrink-0 ${
                         menu.badgeColor || 'bg-[#C5A059]'
                       }`}
                     >
@@ -206,7 +206,7 @@ export default function CitizenSidebar() {
                     </span>
                   )}
                 </div>
-                <div className="text-[10px] text-slate-400 truncate mt-0.5 leading-tight">
+                <div className="text-[10px] text-blue-200/90 truncate mt-0.5 leading-tight">
                   {menu.desc}
                 </div>
               </div>
@@ -216,12 +216,12 @@ export default function CitizenSidebar() {
       </nav>
 
       {/* Sidebar Footer: Legal Guarantee */}
-      <div className="p-3 bg-[#0D1829] border-t border-slate-800 text-[10px] text-slate-400 font-sans">
-        <div className="flex items-center justify-between text-slate-300 font-bold mb-1">
+      <div className="p-3.5 bg-[#142947] border-t border-blue-900/50 text-[10px] text-blue-100 font-sans">
+        <div className="flex items-center justify-between text-blue-100 font-bold mb-1">
           <span>TRANSPARENCY GUARANTEE</span>
-          <span className="text-emerald-400 font-mono">100% AUDITED</span>
+          <span className="text-emerald-300 font-mono font-bold">100% AUDITED</span>
         </div>
-        <div className="text-[9px] text-slate-400 leading-normal">
+        <div className="text-[9px] text-blue-200/80 leading-normal">
           Enacted under RFCTLARR Act 2013 (Sec 11, 15, 19, 21, 23 &amp; 38). No citizen land acquired without statutory notice.
         </div>
       </div>
@@ -231,7 +231,7 @@ export default function CitizenSidebar() {
   return (
     <>
       {/* Desktop Persistent Sidebar (Left Pane) */}
-      <aside className="hidden lg:block w-64 shrink-0 h-[calc(100vh-73px)] sticky top-[73px] z-20">
+      <aside className="hidden lg:block w-72 xl:w-80 shrink-0 h-[calc(100vh-73px)] sticky top-[73px] z-20">
         {sidebarContent}
       </aside>
 
