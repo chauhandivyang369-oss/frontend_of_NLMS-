@@ -41,7 +41,7 @@ export default function AppropriateGovHeader() {
   const isCentral = jurisdiction === 'CENTRAL';
 
   return (
-    <header className="bg-[#1B365D] text-white border-b-2 border-[#C5A059] shadow-md sticky top-0 z-40">
+    <header className="bg-[#1B365D] text-white border-b-2 border-[#C5A059] shadow-md sticky top-0 z-40 shrink-0">
       {/* Top Banner Ribbon */}
       <div className="bg-[#142642] px-4 py-1 text-[11px] text-slate-300 flex items-center justify-between border-b border-slate-700/60 font-sans">
         <div className="flex items-center gap-3">
@@ -197,6 +197,24 @@ export default function AppropriateGovHeader() {
                 </div>
 
                 <div className="p-1 space-y-1">
+                  {/* Workspace 0: National Landing Page */}
+                  <button
+                    onClick={() => {
+                      setIsWorkspaceMenuOpen(false);
+                      if (onSwitchWorkspace) onSwitchWorkspace('landing');
+                    }}
+                    className="w-full text-left p-2 rounded hover:bg-slate-800 text-amber-300 hover:text-amber-200 flex items-center justify-between group cursor-pointer border-b border-slate-800"
+                  >
+                    <div>
+                      <div className="font-bold text-amber-300">
+                        0. National Landing Page &amp; Public Portal
+                      </div>
+                      <div className="text-[10px] text-slate-400">
+                        Citizen Services, ULPIN Search, 7 Role Groups
+                      </div>
+                    </div>
+                  </button>
+
                   {/* Workspace 1: Requiring Body */}
                   <button
                     onClick={() => {
@@ -425,6 +443,18 @@ export default function AppropriateGovHeader() {
               </div>
             )}
           </div>
+
+          {/* Logout Button -> Landing Page */}
+          <button
+            onClick={() => {
+              if (onSwitchWorkspace) onSwitchWorkspace('landing');
+            }}
+            title="Logout & Return to NLAMS Public Portal"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 bg-red-950/70 hover:bg-red-900 border border-red-500/50 text-red-200 hover:text-white text-xs font-semibold rounded cursor-pointer transition-colors"
+          >
+            <LogOut className="w-3.5 h-3.5 text-red-400" />
+            <span className="hidden sm:inline">Logout</span>
+          </button>
         </div>
       </div>
     </header>

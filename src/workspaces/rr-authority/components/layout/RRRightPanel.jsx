@@ -34,7 +34,20 @@ export default function RRRightPanel() {
   if (!isRightPanelOpen) return null;
 
   return (
-    <aside className="w-80 lg:w-88 shrink-0 bg-slate-50 border-l border-slate-200 flex flex-col h-[calc(100vh-3.5rem)] select-none text-xs">
+    <>
+      {/* Backdrop for screens below xl */}
+      <div 
+        onClick={() => setIsRightPanelOpen(false)}
+        className="xl:hidden fixed inset-0 bg-slate-900/50 backdrop-blur-2xs z-40 transition-opacity"
+        title="Click to dismiss panel"
+      />
+
+      <aside className="
+        fixed xl:static inset-y-14 right-0 z-40 xl:z-auto
+        w-80 sm:w-88 shrink-0 bg-slate-50 border-l border-slate-200 
+        flex flex-col h-[calc(100vh-3.5rem)] select-none text-xs
+        shadow-2xl xl:shadow-none transition-transform duration-200
+      ">
       
       {/* Panel Top Header */}
       <div className="h-10 px-3 border-b border-slate-200 bg-white flex items-center justify-between">
@@ -339,5 +352,6 @@ export default function RRRightPanel() {
 
       </div>
     </aside>
+    </>
   );
 }

@@ -21,6 +21,7 @@ import {
   Printer,
   ChevronRight,
   Shield,
+  ShieldCheck,
   Activity,
   ArrowRight,
   RefreshCw,

@@ -53,7 +53,7 @@ export default function RequisitioningBodyLayout({ onSwitchToPolicyMaker, onSwit
   const isLightShell = true; // All Requisitioning Body modules use the crisp official institutional light background
 
   return (
-    <div className="min-h-screen bg-[#0b1325] text-slate-100 flex flex-col font-sans selection:bg-amber-500 selection:text-slate-950">
+    <div className="h-screen w-screen bg-[#0b1325] text-slate-100 flex flex-col font-sans selection:bg-amber-500 selection:text-slate-950 overflow-hidden">
       {/* Top National Government Header */}
       <GovernmentHeader 
         onSwitchToPolicyMaker={onSwitchToPolicyMaker} 
@@ -62,7 +62,7 @@ export default function RequisitioningBodyLayout({ onSwitchToPolicyMaker, onSwit
       />
 
       {/* Main Workspace Body with Sidebar and Content Viewport */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden min-h-0">
         {/* Left 10-Menu Statutory Sidebar */}
         <Sidebar 
           isCollapsed={isSidebarCollapsed} 
@@ -70,7 +70,7 @@ export default function RequisitioningBodyLayout({ onSwitchToPolicyMaker, onSwit
         />
 
         {/* Dynamic Module Content Viewport */}
-        <main className="flex-1 overflow-y-auto bg-[#f8fafc] text-slate-900 p-3 sm:p-5 lg:p-6">
+        <main className="flex-1 overflow-y-auto min-h-0 min-w-0 bg-[#f8fafc] text-slate-900 p-3 sm:p-5 lg:p-6">
           <div className="max-w-[1720px] mx-auto w-full">
             {renderModule()}
           </div>

@@ -6,6 +6,7 @@
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import { AppropriateGovApi } from '../services/appropriateGovApi.js';
 import { getStatutoryRules } from '../services/statutoryRulesConfig.js';
+import { getAppropriateGovConfig } from '../services/appropriateGovConfig.js';
 import { MOCK_PARCELS } from '../../../mock/requisitions.js';
 import { MOCK_STATE_LAND_BANK_RECORDS } from '../services/appropriateGovMockData.js';
 
@@ -15,32 +16,22 @@ export function AppropriateGovernmentProvider({ children, initialJurisdiction = 
   // Jurisdiction state: 'CENTRAL' | 'STATE'
   const [jurisdiction, setJurisdiction] = useState(initialJurisdiction);
 
+  useEffect(() => {
+    setJurisdiction(initialJurisdiction);
+  }, [initialJurisdiction]);
+
   // Active Menu Index (1-8 strictly)
   const [activeMenuId, setActiveMenuId] = useState('executive-dashboard');
 
-  // Role state
-  const centralRoles = [
-    { id: 'ROLE-CENTRAL-JS', title: 'Joint Secretary to Govt of India', department: 'Ministry of Road Transport & Highways (MoRTH)', level: 'Apex Central Authority' },
-    { id: 'ROLE-CENTRAL-NMC', title: 'NMC Member Secretary', department: 'Department of Land Resources (DoLR)', level: 'National Monitoring Committee' },
-    { id: 'ROLE-CENTRAL-RAIL', title: 'Executive Director (Land Management)', department: 'Railway Board / DFCCIL', level: 'Central Ministry CalA Gateway' }
-  ];
+  // Configuration for Central vs State
+  const config = useMemo(() => getAppropriateGovConfig(jurisdiction), [jurisdiction]);
 
-  const stateRoles = [
-    { id: 'ROLE-STATE-ACS', title: 'Additional Chief Secretary (Revenue)', department: 'Revenue & Forest Department, Govt of Maharashtra', level: 'State Apex Revenue Head' },
-    { id: 'ROLE-STATE-PWD', title: 'Principal Secretary (PWD)', department: 'Public Works Department, Govt of Maharashtra', level: 'State Appropriate Authority' },
-    { id: 'ROLE-STATE-SMC', title: 'SMC Member Secretary', department: 'State Monitoring Committee for R&R', level: 'State Oversight Bench' }
-  ];
-
-  const [activeRole, setActiveRole] = useState(initialJurisdiction === 'CENTRAL' ? centralRoles[0] : stateRoles[0]);
+  const [activeRole, setActiveRole] = useState(config.primaryRoles[0]);
 
   // Keep active role aligned when switching jurisdiction
   useEffect(() => {
-    if (jurisdiction === 'CENTRAL') {
-      setActiveRole(centralRoles[0]);
-    } else {
-      setActiveRole(stateRoles[0]);
-    }
-  }, [jurisdiction]);
+    setActiveRole(config.primaryRoles[0]);
+  }, [jurisdiction, config]);
 
   // Data states
   const [projects, setProjects] = useState([]);
@@ -220,11 +211,12 @@ export function AppropriateGovernmentProvider({ children, initialJurisdiction = 
   const value = {
     jurisdiction,
     setJurisdiction,
+    config,
     activeMenuId,
     setActiveMenuId,
     activeRole,
     setActiveRole,
-    availableRoles: jurisdiction === 'CENTRAL' ? centralRoles : stateRoles,
+    availableRoles: config.primaryRoles,
 
     projects,
     proposals,

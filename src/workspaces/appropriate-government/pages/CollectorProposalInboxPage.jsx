@@ -19,6 +19,7 @@ import {
   Clock,
   Shield,
   FileCheck,
+  Compass,
   Download,
   Printer,
   ChevronDown

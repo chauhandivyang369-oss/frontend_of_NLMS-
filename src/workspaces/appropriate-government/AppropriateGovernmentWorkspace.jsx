@@ -60,7 +60,7 @@ function AppropriateGovernmentInner() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA] flex flex-col font-sans text-slate-900 select-none">
+    <div className="h-screen w-screen bg-[#F8F9FA] flex flex-col font-sans text-slate-900 select-none overflow-hidden">
       {/* Top Header */}
       <AppropriateGovHeader />
 
@@ -68,12 +68,12 @@ function AppropriateGovernmentInner() {
       <AppropriateGovProjectContextBar />
 
       {/* Main Workspace 2-Pane Body */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden min-h-0">
         {/* Primary 8-Menu Sidebar */}
         <AppropriateGovSidebar />
 
         {/* Active Content Area */}
-        <main className="flex-1 overflow-y-auto">
+        <main className="flex-1 overflow-y-auto min-h-0 min-w-0">
           {renderCurrentPage()}
         </main>
       </div>

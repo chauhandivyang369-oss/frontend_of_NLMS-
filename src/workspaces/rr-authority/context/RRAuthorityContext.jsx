@@ -110,7 +110,12 @@ export function RRAuthorityProvider({ children }) {
   // UI state
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
-  const [isRightPanelOpen, setIsRightPanelOpen] = useState(true);
+  const [isRightPanelOpen, setIsRightPanelOpen] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth >= 1280;
+    }
+    return true;
+  });
   const [activeRightTab, setActiveRightTab] = useState('alerts'); // 'alerts', 'countdown', 'actions', 'checklist', 'audit'
 
   // Global ULPIN Search Modal state

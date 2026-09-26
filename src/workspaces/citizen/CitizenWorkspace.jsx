@@ -59,17 +59,17 @@ function CitizenWorkspaceInner() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA] text-slate-900 flex flex-col font-sans select-none">
+    <div className="h-screen w-screen bg-[#F8F9FA] text-slate-900 flex flex-col font-sans select-none overflow-hidden">
       {/* Top Universal Citizen Header */}
       <CitizenHeader />
 
       {/* Main 3-Pane Body */}
-      <div className="flex-1 flex overflow-hidden relative">
+      <div className="flex-1 flex overflow-hidden min-h-0 relative">
         {/* Left Sidebar (10 Menus) */}
         <CitizenSidebar />
 
         {/* Center Main Stage */}
-        <main className="flex-1 overflow-y-auto bg-[#F8F9FA] p-4 sm:p-6 lg:p-8 flex flex-col gap-6">
+        <main className="flex-1 overflow-y-auto min-h-0 min-w-0 bg-[#F8F9FA] p-4 sm:p-6 lg:p-8 flex flex-col gap-6">
           {/* Project Micro-Universe Banner if drilling into a project */}
           {isProjectWorkspaceOpen && (
             <CitizenProjectContextBar />

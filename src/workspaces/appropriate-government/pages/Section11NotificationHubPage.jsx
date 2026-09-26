@@ -227,6 +227,17 @@ export default function Section11NotificationHubPage() {
         >
           8. 60-Day Objection Trigger (Sec 15)
         </button>
+
+        <button
+          onClick={() => setActiveTab('revenue-stack')}
+          className={`px-3 py-2 border-b-2 transition-all cursor-pointer shrink-0 ${
+            activeTab === 'revenue-stack'
+              ? 'border-[#1B365D] text-[#1B365D] bg-slate-50 font-bold'
+              : 'border-transparent text-slate-500 hover:text-slate-900'
+          }`}
+        >
+          {jurisdiction === 'CENTRAL' ? '9. Central Cadastral Exchange' : '9. State Revenue Stack (RoR & SRO)'}
+        </button>
       </div>
 
       {/* ================= TAB 1: ELIGIBILITY CHECKLIST GATE ================= */}
@@ -611,6 +622,74 @@ export default function Section11NotificationHubPage() {
             <p className="text-slate-600 text-[11px] leading-relaxed">
               District Collector is conducting statutory public hearings under Section 15(2). Upon conclusion of hearings, the Collector prepares a comprehensive report with recommendations and submits to the Appropriate Government for review in Menu 5.
             </p>
+          </div>
+        </div>
+      )}
+
+      {/* ================= TAB 9: STATE REVENUE STACK & SRO ADAPTERS ================= */}
+      {activeTab === 'revenue-stack' && (
+        <div className="bg-white border border-slate-200 rounded p-4 shadow-xs space-y-3">
+          <div className="flex items-center justify-between pb-2 border-b border-slate-200">
+            <div>
+              <h3 className="text-sm font-bold text-[#1B365D] uppercase tracking-wide flex items-center gap-2">
+                <Layers className="w-4 h-4 text-[#C5A059]" />
+                {jurisdiction === 'CENTRAL' ? 'Central Cadastral Sync & Inter-State Registry Adapters' : 'State Revenue Stack & NGDRS Registry Adapters'}
+              </h3>
+              <p className="text-xs text-slate-500">
+                {jurisdiction === 'CENTRAL'
+                  ? 'National DILRMP coordination, multi-state boundary reconciliation and Central CALA registry gateway'
+                  : 'State Jamabandi RoR, e-Mutation, Bhu-Naksha GIS cadastre, Circle Rate registry and Sub-Registrar SRO/NGDRS sync'}
+              </p>
+            </div>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-300 font-bold">
+              MOCK ADAPTERS ACTIVE • API READY
+            </span>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-xs border border-slate-200 min-w-[700px]">
+              <thead className="bg-[#1B365D] text-white uppercase text-[10px] font-mono tracking-wider">
+                <tr>
+                  <th className="py-2.5 px-3">System Name</th>
+                  <th className="py-2.5 px-3">Statutory Purpose</th>
+                  <th className="py-2.5 px-3 text-center">Configured</th>
+                  <th className="py-2.5 px-3 text-center">Mock Status</th>
+                  <th className="py-2.5 px-3 text-center">Request Status</th>
+                  <th className="py-2.5 px-3 text-center">Last Sync</th>
+                  <th className="py-2.5 px-3">Error / Flags</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200 text-slate-700">
+                {(jurisdiction === 'STATE' ? [
+                  { name: 'State RoR / Jamabandi', purpose: 'Ownership title, Khatedar verification & land classification', configured: 'YES', mock: 'ACTIVE', status: '200 OK', sync: '25-Sep-2026 11:20', err: 'None (Clean)' },
+                  { name: 'e-Mutation Engine', purpose: 'Automated 60-day mutation entry under Section 11(5)', configured: 'YES', mock: 'ACTIVE', status: '200 OK', sync: '25-Sep-2026 10:45', err: 'None (Clean)' },
+                  { name: 'Bhu-Naksha GIS Cadastre', purpose: 'Spatial polygon geometry, ULPIN mapping & boundary shifts', configured: 'YES', mock: 'ACTIVE', status: '200 OK', sync: '25-Sep-2026 09:15', err: 'None (Clean)' },
+                  { name: 'Circle Rates Registry', purpose: 'Sub-Registrar guidance market value for Section 26 calculation', configured: 'YES', mock: 'ACTIVE', status: '200 OK', sync: '24-Sep-2026 18:00', err: 'None (Clean)' },
+                  { name: 'SRO / NGDRS Gateway', purpose: 'Section 11(4) automated encumbrance transaction freeze', configured: 'YES', mock: 'ACTIVE', status: '200 OK', sync: '25-Sep-2026 11:00', err: 'None (Bar Active)' },
+                  { name: 'Survey Settlement Office', purpose: 'Village boundary ground-truthing & sub-division verification', configured: 'YES', mock: 'ACTIVE', status: '200 OK', sync: '24-Sep-2026 14:30', err: 'None (Clean)' }
+                ] : [
+                  { name: 'DILRMP Central Sync', purpose: 'National Land Records Modernization Programme alignment', configured: 'YES', mock: 'ACTIVE', status: '200 OK', sync: '25-Sep-2026 11:15', err: 'None (Clean)' },
+                  { name: 'Inter-State Cadastre Link', purpose: 'Multi-state corridor boundary reconciliation (Punjab-Haryana)', configured: 'YES', mock: 'ACTIVE', status: '200 OK', sync: '25-Sep-2026 10:30', err: 'None (Clean)' },
+                  { name: 'Central Ministry CALA Gateway', purpose: 'Competent Authority Land Acquisition delegation under Special Acts', configured: 'YES', mock: 'ACTIVE', status: '200 OK', sync: '25-Sep-2026 09:40', err: 'None (Clean)' },
+                  { name: 'PFMS / CNA Escrow Hook', purpose: 'Section 19(2) 100% cost deposit automated ledger check', configured: 'YES', mock: 'ACTIVE', status: '200 OK', sync: '25-Sep-2026 11:22', err: 'None (Funded)' },
+                  { name: 'Central e-Gazette Gateway', purpose: 'Directorate of Printing S.O. publication dispatch', configured: 'YES', mock: 'ACTIVE', status: '200 OK', sync: '25-Sep-2026 08:00', err: 'None (Clean)' }
+                ]).map((ad, idx) => (
+                  <tr key={idx} className="hover:bg-slate-50">
+                    <td className="py-2.5 px-3 font-bold text-slate-900">{ad.name}</td>
+                    <td className="py-2.5 px-3 text-[11px] text-slate-600">{ad.purpose}</td>
+                    <td className="py-2.5 px-3 text-center font-mono text-[10px] text-emerald-700 font-bold">{ad.configured}</td>
+                    <td className="py-2.5 px-3 text-center">
+                      <span className="px-1.5 py-0.2 rounded bg-amber-50 text-amber-800 border border-amber-200 text-[10px] font-mono font-bold">
+                        {ad.mock}
+                      </span>
+                    </td>
+                    <td className="py-2.5 px-3 text-center font-mono text-[10px] text-emerald-800 font-bold">{ad.status}</td>
+                    <td className="py-2.5 px-3 text-center font-mono text-[10px] text-slate-500">{ad.sync}</td>
+                    <td className="py-2.5 px-3 text-[11px] text-emerald-800 font-semibold">{ad.err}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       )}

@@ -8,7 +8,8 @@ import {
   Shield, 
   Settings, 
   CheckCircle2,
-  ArrowRightLeft
+  ArrowRightLeft,
+  LogOut
 } from 'lucide-react';
 
 export default function GovernmentHeader({ onSwitchToPolicyMaker, onSwitchToSiaIeg, onSwitchWorkspace }) {
@@ -123,6 +124,23 @@ export default function GovernmentHeader({ onSwitchToPolicyMaker, onSwitchToSiaI
                   NLAMS Master Workspaces
                 </div>
                 <div className="space-y-1 py-1">
+                  <button
+                    onClick={() => {
+                      setWorkspaceMenuOpen(false);
+                      if (onSwitchWorkspace) onSwitchWorkspace('landing');
+                    }}
+                    className="w-full text-left p-2 rounded-lg hover:bg-slate-800 text-amber-300 hover:text-amber-200 flex items-center justify-between group cursor-pointer border-b border-slate-800"
+                  >
+                    <div>
+                      <div className="font-bold text-amber-300">
+                        0. National Landing Page &amp; Public Portal
+                      </div>
+                      <div className="text-[10px] text-slate-400">
+                        Citizen Services, ULPIN Search, 7 Role Groups
+                      </div>
+                    </div>
+                  </button>
+
                   <div className="p-2 rounded-lg bg-amber-950/60 border border-amber-500/40 text-amber-200 flex items-center justify-between">
                     <div>
                       <div className="font-bold text-white">
@@ -224,6 +242,18 @@ export default function GovernmentHeader({ onSwitchToPolicyMaker, onSwitchToSiaI
               </div>
             )}
           </div>
+
+          {/* Logout Button -> Landing Page */}
+          <button
+            onClick={() => {
+              if (onSwitchWorkspace) onSwitchWorkspace('landing');
+            }}
+            title="Logout & Return to NLAMS Public Portal"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 bg-red-950/70 hover:bg-red-900 border border-red-500/50 text-red-200 hover:text-white text-xs font-semibold rounded cursor-pointer transition-colors"
+          >
+            <LogOut className="w-3.5 h-3.5 text-red-400" />
+            <span className="hidden sm:inline">Logout</span>
+          </button>
 
         </div>
 

@@ -52,7 +52,7 @@ function DistrictCollectorInner() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA] flex flex-col font-sans text-slate-900 select-none">
+    <div className="h-screen w-screen bg-[#F8F9FA] flex flex-col font-sans text-slate-900 select-none overflow-hidden">
       {/* Top Header */}
       <CollectorHeader />
 
@@ -60,12 +60,12 @@ function DistrictCollectorInner() {
       <CollectorProjectContextBar />
 
       {/* Main 2-Pane Workspace */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden min-h-0">
         {/* 10-Menu Sidebar */}
         <CollectorSidebar />
 
         {/* Dynamic Content Pane */}
-        <main className="flex-1 overflow-y-auto">
+        <main className="flex-1 overflow-y-auto min-h-0 min-w-0">
           {renderActivePage()}
         </main>
       </div>

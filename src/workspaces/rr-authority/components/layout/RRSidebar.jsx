@@ -55,23 +55,23 @@ export default function RRSidebar() {
 
   return (
     <>
-      {/* Mobile Backdrop */}
+      {/* Mobile/Tablet Backdrop */}
       {isMobileSidebarOpen && (
         <div 
           onClick={() => setIsMobileSidebarOpen(false)}
-          className="md:hidden fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-40 transition-opacity"
+          className="lg:hidden fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-40 transition-opacity"
         />
       )}
 
       {/* Sidebar Container */}
       <aside 
-        className={`fixed md:static inset-y-0 left-0 z-50 flex flex-col bg-[#0F2342] text-slate-200 border-r border-slate-700/80 transition-all duration-200 ease-in-out select-none shadow-md md:shadow-none ${
-          isMobileSidebarOpen ? 'translate-x-0 w-72' : '-translate-x-full md:translate-x-0'
-        } ${isSidebarCollapsed ? 'md:w-16' : 'md:w-64 lg:w-72'}`}
+        className={`fixed lg:static inset-y-0 left-0 z-50 flex flex-col bg-[#0F2342] text-slate-200 border-r border-slate-700/80 transition-all duration-200 ease-in-out select-none shadow-md lg:shadow-none ${
+          isMobileSidebarOpen ? 'translate-x-0 w-72' : '-translate-x-full lg:translate-x-0'
+        } ${isSidebarCollapsed ? 'lg:w-16' : 'lg:w-64 xl:w-72'}`}
       >
         
-        {/* Mobile Header */}
-        <div className="md:hidden h-14 px-4 flex items-center justify-between border-b border-slate-700 bg-[#1B365D]">
+        {/* Mobile/Tablet Drawer Header */}
+        <div className="lg:hidden h-14 px-4 flex items-center justify-between border-b border-slate-700 bg-[#1B365D]">
           <div className="flex items-center gap-2">
             <Shield className="w-4 h-4 text-[#C5A059]" />
             <span className="font-bold text-xs uppercase tracking-wider text-white">

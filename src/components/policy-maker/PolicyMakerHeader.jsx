@@ -13,7 +13,8 @@ import {
   ArrowRightLeft,
   X,
   Menu,
-  Sparkles
+  Sparkles,
+  LogOut
 } from 'lucide-react';
 import DemoDataBadge from './DemoDataBadge.jsx';
 
@@ -376,6 +377,18 @@ export default function PolicyMakerHeader({ onSwitchToRequiringBody, onSwitchToS
               </div>
             )}
           </div>
+
+          {/* Logout Button -> Landing Page */}
+          <button
+            onClick={() => {
+              if (onSwitchWorkspace) onSwitchWorkspace('landing');
+            }}
+            title="Logout & Return to NLAMS Public Portal"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 bg-red-950/70 hover:bg-red-900 border border-red-500/50 text-red-200 hover:text-white text-xs font-semibold rounded cursor-pointer transition-colors"
+          >
+            <LogOut className="w-3.5 h-3.5 text-red-400" />
+            <span className="hidden sm:inline">Logout</span>
+          </button>
 
         </div>
 

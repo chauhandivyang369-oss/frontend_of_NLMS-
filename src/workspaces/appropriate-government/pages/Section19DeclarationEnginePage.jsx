@@ -217,6 +217,17 @@ export default function Section19DeclarationEnginePage() {
         >
           8. 12-Channel Publication Matrix
         </button>
+
+        <button
+          onClick={() => setActiveTab('output-artifacts')}
+          className={`px-3 py-2 border-b-2 transition-all cursor-pointer ${
+            activeTab === 'output-artifacts'
+              ? 'border-[#1B365D] text-[#1B365D] bg-slate-50 font-bold'
+              : 'border-transparent text-slate-500 hover:text-slate-900'
+          }`}
+        >
+          9. Output Artifacts &amp; Broadcast Seal
+        </button>
       </div>
 
       {/* ================= TAB 1: ELIGIBILITY CHECKLIST GATE ================= */}
@@ -549,6 +560,125 @@ export default function Section19DeclarationEnginePage() {
             })
           }
         />
+      )}
+
+      {/* ================= TAB 9: OUTPUT ARTIFACT STRIP & BROADCAST ================= */}
+      {activeTab === 'output-artifacts' && (
+        <div className="bg-white border border-slate-200 rounded p-4 shadow-xs space-y-4 text-xs">
+          <div className="flex items-center justify-between pb-2 border-b border-slate-200">
+            <div>
+              <h3 className="text-sm font-bold text-[#1B365D] uppercase tracking-wide flex items-center gap-2">
+                <FileCheck className="w-4 h-4 text-emerald-600" />
+                Section 19 Statutory Output Artifacts &amp; Broadcast Seal
+              </h3>
+              <p className="text-xs text-slate-500">
+                Official statutory artifacts generated upon Section 19 declaration execution
+              </p>
+            </div>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-300 font-bold">
+              NON-REPUDIABLE STATUTORY RECORDS
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="p-3 bg-slate-50 rounded border border-slate-200 space-y-1">
+              <span className="text-[10px] text-slate-500 uppercase font-mono block">DECLARATION ID</span>
+              <div className="font-mono font-bold text-slate-900 text-sm">{current.id}</div>
+              <div className="text-[10px] text-slate-400">Canonical statutory identity</div>
+            </div>
+
+            <div className="p-3 bg-slate-50 rounded border border-slate-200 space-y-1">
+              <span className="text-[10px] text-slate-500 uppercase font-mono block">NOTIFICATION NUMBER</span>
+              <div className="font-mono font-bold text-blue-900 text-sm">{current.declarationNo || 'S.O. 3120(E)'}</div>
+              <div className="text-[10px] text-slate-400">Extraordinary Gazette Issue</div>
+            </div>
+
+            <div className="p-3 bg-slate-50 rounded border border-slate-200 space-y-1">
+              <span className="text-[10px] text-slate-500 uppercase font-mono block">DSC e-SIGN STATUS</span>
+              <div className="font-bold text-emerald-700 flex items-center gap-1">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>SHA-256 SEALED</span>
+              </div>
+              <div className="text-[10px] text-slate-400 font-mono truncate">a7b8c9d0e1f2a3...</div>
+            </div>
+
+            <div className="p-3 bg-slate-50 rounded border border-slate-200 space-y-1">
+              <span className="text-[10px] text-slate-500 uppercase font-mono block">BROADCAST STATUS</span>
+              <div className="font-bold text-emerald-700 flex items-center gap-1">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>DISPATCHED (6/6)</span>
+              </div>
+              <div className="text-[10px] text-slate-400">Downstream workspaces alerted</div>
+            </div>
+          </div>
+
+          {/* Artifact Rows */}
+          <div className="space-y-2 pt-2 border-t">
+            <div className="font-bold text-slate-800 uppercase tracking-wide text-[11px]">
+              Available Statutory Documents &amp; Gazette Records:
+            </div>
+
+            <div className="p-2.5 rounded border border-slate-200 bg-slate-50 flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <FileText className="w-4 h-4 text-red-600" />
+                <div>
+                  <div className="font-bold text-slate-900">
+                    Official Section 19(1) Declaration Notification Gazette.pdf
+                  </div>
+                  <div className="text-[10px] text-slate-500">
+                    Government Printing Press Extraordinary Gazette • 3.2 MB • Version 1.0 Final
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() =>
+                    setGazetteModalDoc({
+                      id: current?.id,
+                      notificationNo: current?.declarationNo || 'S.O. 3120(E)',
+                      section: 'SECTION 19(1)',
+                      publicationDate: '2026-08-20',
+                      jurisdictionType: jurisdiction,
+                      projectCode: current?.projectId,
+                      signedBy: 'Joint Secretary to Govt of India',
+                      sha256Hash: 'a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8',
+                      version: 'V1.0 FINAL DECLARATION'
+                    })
+                  }
+                  className="px-2.5 py-1 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 rounded font-semibold text-[11px] flex items-center gap-1 cursor-pointer"
+                >
+                  <Eye className="w-3.5 h-3.5 text-amber-700" />
+                  View Gazette
+                </button>
+                <button
+                  onClick={() => window.print()}
+                  className="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 rounded font-semibold text-[11px] flex items-center gap-1 cursor-pointer"
+                >
+                  <Printer className="w-3.5 h-3.5 text-slate-500" />
+                  Print
+                </button>
+              </div>
+            </div>
+
+            <div className="p-2.5 rounded border border-slate-200 bg-slate-50 flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <FileText className="w-4 h-4 text-emerald-600" />
+                <div>
+                  <div className="font-bold text-slate-900">
+                    Consolidated Cadastral Schedule &amp; Land Plan Inspection Manifest.xlsx
+                  </div>
+                  <div className="text-[10px] text-slate-500">
+                    Complete ULPIN manifest, survey division boundaries &amp; titleholder list • 1.1 MB
+                  </div>
+                </div>
+              </div>
+              <button className="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 rounded font-semibold text-[11px] flex items-center gap-1 cursor-pointer">
+                <Download className="w-3.5 h-3.5 text-slate-500" />
+                Download
+              </button>
+            </div>
+          </div>
+        </div>
       )}
 
       {/* Court Stay Record Modal */}

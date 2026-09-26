@@ -15,7 +15,8 @@ import {
   Layers, 
   ExternalLink,
   Sparkles,
-  Award
+  Award,
+  LogOut
 } from 'lucide-react';
 
 export default function RRTopbar({ onSwitchWorkspace }) {
@@ -53,7 +54,7 @@ export default function RRTopbar({ onSwitchWorkspace }) {
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <button
             onClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
-            className="md:hidden p-1.5 rounded-lg bg-slate-800/80 text-slate-200 hover:text-white hover:bg-slate-700 transition-colors cursor-pointer"
+            className="lg:hidden p-1.5 rounded-lg bg-slate-800/80 text-slate-200 hover:text-white hover:bg-slate-700 transition-colors cursor-pointer"
             title="Toggle Navigation Menu"
           >
             <Menu className="w-4 h-4" />
@@ -414,6 +415,18 @@ export default function RRTopbar({ onSwitchWorkspace }) {
               </div>
             )}
           </div>
+
+          {/* Logout Button -> Landing Page */}
+          <button
+            onClick={() => {
+              if (onSwitchWorkspace) onSwitchWorkspace('landing');
+            }}
+            title="Logout & Return to NLAMS Public Portal"
+            className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1 bg-red-950/70 hover:bg-red-900 border border-red-500/50 text-red-200 hover:text-white text-xs font-semibold rounded cursor-pointer transition-colors"
+          >
+            <LogOut className="w-3.5 h-3.5 text-red-400" />
+            <span className="hidden sm:inline">Logout</span>
+          </button>
 
         </div>
 

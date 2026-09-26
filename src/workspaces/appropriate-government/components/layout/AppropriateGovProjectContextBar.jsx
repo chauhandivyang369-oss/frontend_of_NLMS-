@@ -31,7 +31,7 @@ export default function AppropriateGovProjectContextBar() {
   const timer = selectedProject.statutoryTimers || {};
 
   return (
-    <div className="bg-[#FAF8F5] border-b border-[#C5A059]/40 px-4 py-2 flex flex-wrap items-center justify-between gap-3 text-xs shadow-xs">
+    <div className="bg-[#FAF8F5] border-b border-[#C5A059]/40 px-4 py-2 flex flex-wrap items-center justify-between gap-3 text-xs shadow-xs shrink-0 relative z-30">
       {/* Left: Active Project Selector & Core Identity */}
       <div className="flex items-center gap-3">
         <div className="relative">

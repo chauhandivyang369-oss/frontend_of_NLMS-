@@ -300,22 +300,30 @@ export const AppropriateGovApi = {
 
   async provisionRbacAssignment(payload) {
     const newAssignment = {
-      id: `RBAC-ASGN-${Date.now().toString().slice(-4)}`,
+      id: payload.id || `RBAC-${payload.category || 'ASGN'}-${Date.now().toString().slice(-4)}`,
       category: payload.category,
+      subCategory: payload.subCategory || payload.committeeType,
       jurisdictionType: payload.jurisdictionType,
       committeeType: payload.committeeType,
       role: payload.role,
-      memberName: payload.memberName || payload.officialName || payload.agencyName,
+      memberName: payload.memberName || payload.officialName || payload.agencyName || (payload.members && payload.members[0]?.name) || 'Statutory Member Body',
       department: payload.department,
       designation: payload.designation,
-      email: payload.email,
-      mobile: payload.mobile,
+      email: payload.email || (payload.members && payload.members[0]?.email),
+      mobile: payload.mobile || (payload.members && payload.members[0]?.phone),
+      members: payload.members || [],
       gazetteOrderNo: payload.gazetteOrderNo || `GOI-ORD-${Date.now().toString().slice(-4)}`,
       projectId: payload.projectId,
-      menuAccess: payload.menuAccess,
+      projectName: payload.projectName,
+      menuAccess: payload.menuAccess || {},
+      grantedMenus: payload.grantedMenus || [],
+      temporaryPassword: payload.temporaryPassword || `NLAMS#${Math.floor(1000 + Math.random() * 9000)}${String.fromCharCode(65 + Math.floor(Math.random() * 26))}`,
+      loginUsername: payload.loginUsername || payload.email || `officer.${Date.now().toString().slice(-4)}@nlams.gov.in`,
+      dispatchStatus: 'DISPATCHED_TO_GMAIL',
+      dispatchedAt: new Date().toISOString(),
       status: 'PROVISIONED',
       provisionedAt: new Date().toISOString().split('T')[0],
-      credentialLoginPlaceholder: `https://nlams.gov.in/workspace-auth/login?token=${Date.now()}`
+      credentialLoginPlaceholder: `https://nlams.gov.in/workspace-auth/login?token=${Date.now()}&role=${encodeURIComponent(payload.role || payload.category)}`
     };
 
     stateRbacAssignments.unshift(newAssignment);
@@ -333,7 +341,7 @@ export const AppropriateGovApi = {
       oldValue: 'NO_ACCESS',
       newValue: 'VIEW_AUTHORIZED',
       eSignStatus: 'SYSTEM_DISPATCHED',
-      reason: `Downstream workspace provisioned for ${newAssignment.memberName} with designated menu matrix`,
+      reason: `Downstream workspace provisioned for ${newAssignment.memberName} with ${newAssignment.grantedMenus.length || Object.keys(newAssignment.menuAccess).length} designated menus and Gmail credential dispatch`,
       reference: newAssignment.gazetteOrderNo
     });
 
